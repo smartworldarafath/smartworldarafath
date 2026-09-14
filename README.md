@@ -1,5 +1,5 @@
 # 💫 About Me:
-🔭 Building: High-end Android applications and modern web ecosystems.<br><br>🎨 Design: Minimalist UI, Material 3, and Glassmorphism.<br><br>🛠️ Stack: Android Studio (Native), Java, Kotlin, Google Antigravity, and cutting-edge AI.<br><br>📚 Learning: C++, Microsoft Visual Studio, Cursor, Windsurf, and Context.<br><br>⚡ Philosophy: If it’s not smooth, it’s not finished. I’m obsessed with eliminating lag and perfecting motion.
+🔭 Building: High-end Android applications and modern web ecosystems.<br><br>🎨 Design: Minimalist UI, Material 3, and Glassmorphism.<br><br>🛠️ Stack: Android Studio (Native), Java, Kotlin, Google Antigravity, and cutting-edge AI.<br><br>📚 Microsoft Visual Studio, Cursor, Windsurf, and Context.<br><br>⚡ Philosophy: If it’s not smooth, it’s not finished. I’m obsessed with eliminating lag and perfecting motion.
 
 
 ## 🌐 Socials:
