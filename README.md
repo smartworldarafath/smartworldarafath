@@ -31,8 +31,8 @@ If you find this project helpful and want to support ongoing development, mainte
 | **☕ Buy Me a Coffee** | [https://www.buymeacoffee.com/arafathrahman](https://www.buymeacoffee.com/arafathrahman) |
 | **☕ SupportKori** | [https://www.supportkori.com/arafathrahman](https://www.supportkori.com/arafathrahman) |
 | **⚡ nsave** | Ntag: `@arafath_rahman9` (Md Arafath Rahman) |
-| ** RedotPay** | Account ID: `1965421414` |
-| ** Payoneer** | Email: `arafathrahman710@gmail.com` (Customer ID: 70366820) |
+| **🔴 RedotPay** | Account ID: `1965421414` |
+| **🅿️ Payoneer** | Email: `arafathrahman710@gmail.com` (Customer ID: 70366820) |
 
 <br/>
 
