@@ -45,8 +45,6 @@ If you find this project helpful and want to support ongoing development, mainte
 
 ---
 
-## ☕ Support / Buy Me a Coffee & Become a Sponsor
-
 <div align="center">
 
 <a href="SUPPORT.md" target="_blank">
