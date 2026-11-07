@@ -17,10 +17,10 @@
 
 ---
 
-Android and software developer focused on native performance, Material 3 Expressive UI, and modern web applications. Active open-source contributor across upstream projects including VS Code, Qwen, and community tooling.
+Android and software developer focused on native performance, Material 3 Expressive UI, and modern web applications. Active open-source contributor across upstream projects.
 
 - **Building:** High-end native Android apps (Kotlin, Jetpack Compose) and modern web ecosystems.
-- **Design:** Minimalist UI, Material Design 3 Expressive, and fluid physics-based motion.
+- **Design:** Minimalist UI, Material Design 3 Expressive, Liquid Glass and fluid physics-based motion.
 - **Open Source:** Bug fixes, performance optimizations, and feature contributions across major repos.
 
 > *If it's not smooth, it's not finished. Obsessed with eliminating lag and perfecting motion.*
