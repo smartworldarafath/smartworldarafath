@@ -30,23 +30,82 @@ Android and software developer focused on native performance, Material 3 Express
 ### Tech Stack & Tooling
 
 **Languages & Core Systems**  
-![Kotlin](https://img.shields.io/badge/Kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)
-![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![C](https://img.shields.io/badge/C-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
-![.NET](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
+<p>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/pill-kotlin.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/pill-kotlin.svg">
+    <img src="assets/readme/dark/pill-kotlin.svg" alt="Kotlin" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/pill-java.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/pill-java.svg">
+    <img src="assets/readme/dark/pill-java.svg" alt="Java" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/pill-ts.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/pill-ts.svg">
+    <img src="assets/readme/dark/pill-ts.svg" alt="TypeScript" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/pill-js.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/pill-js.svg">
+    <img src="assets/readme/dark/pill-js.svg" alt="JavaScript" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/pill-python.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/pill-python.svg">
+    <img src="assets/readme/dark/pill-python.svg" alt="Python" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/pill-c.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/pill-c.svg">
+    <img src="assets/readme/dark/pill-c.svg" alt="C / C++" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/pill-dotnet.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/pill-dotnet.svg">
+    <img src="assets/readme/dark/pill-dotnet.svg" alt=".NET" />
+  </picture>
+</p>
 
 **Platforms, Cloud & Infrastructure**  
-![Android Native](https://img.shields.io/badge/Android%20Studio-%233DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white)
-![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white)
-![Google Cloud](https://img.shields.io/badge/Google%20Cloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-![Git](https://img.shields.io/badge/Git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
-![Windows Terminal](https://img.shields.io/badge/Windows%20Terminal-%234D4D4D.svg?style=for-the-badge&logo=windows-terminal&logoColor=white)
-![Figma](https://img.shields.io/badge/Figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
+<p>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/pill-android.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/pill-android.svg">
+    <img src="assets/readme/dark/pill-android.svg" alt="Android Native" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/pill-compose.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/pill-compose.svg">
+    <img src="assets/readme/dark/pill-compose.svg" alt="Jetpack Compose" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/pill-gcp.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/pill-gcp.svg">
+    <img src="assets/readme/dark/pill-gcp.svg" alt="Google Cloud" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/pill-firebase.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/pill-firebase.svg">
+    <img src="assets/readme/dark/pill-firebase.svg" alt="Firebase" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/pill-linux.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/pill-linux.svg">
+    <img src="assets/readme/dark/pill-linux.svg" alt="Linux" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/pill-git.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/pill-git.svg">
+    <img src="assets/readme/dark/pill-git.svg" alt="Git" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/pill-figma.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/pill-figma.svg">
+    <img src="assets/readme/dark/pill-figma.svg" alt="Figma" />
+  </picture>
+</p>
 
 ---
 
