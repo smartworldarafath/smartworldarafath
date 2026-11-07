@@ -17,16 +17,13 @@
 
 ---
 
-### Overview
+Android and software developer focused on native performance, Material 3 Expressive UI, and modern web applications. Active open-source contributor across upstream projects including VS Code, Qwen, and community tooling.
 
-Software engineer specializing in high-performance Android systems architecture, high-refresh-rate display optimization (120Hz/144Hz), and fluid UI engineering. Passionate about eliminating frame drops, minimizing runtime overhead, and constructing deterministic, resilient developer tooling. Active open-source contributor across upstream ecosystems, including VS Code, Qwen, and modern web environments.
+- **Building:** High-end native Android apps (Kotlin, Jetpack Compose) and modern web ecosystems.
+- **Design:** Minimalist UI, Material Design 3 Expressive, and fluid physics-based motion.
+- **Open Source:** Bug fixes, performance optimizations, and feature contributions across major repos.
 
-### Core Focus & Capabilities
-
-- **Systems & Android:** Native Android architecture (Kotlin, Java), Jetpack Compose, high-refresh-rate display synchronization, frame pacing, and binary analysis / reverse engineering.
-- **Architecture & Web:** Modern reactive systems, TypeScript, clean architecture patterns, resilient API design, and modular codebases.
-- **UI Engineering:** Material Design 3 Expressive, physics-driven fluid motion, minimalist ergonomics, and cross-platform consistency.
-- **Engineering Principle:** Performance is not an afterthought. If an interaction drops frames or stutters under load, it is not production-ready.
+> *If it's not smooth, it's not finished. Obsessed with eliminating lag and perfecting motion.*
 
 ---
 
