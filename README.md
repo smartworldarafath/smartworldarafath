@@ -113,12 +113,12 @@ Android and software developer focused on native performance, Material 3 Express
 
 <div align="center">
 
-<img src="https://github-readme-stats-eight-theta.vercel.app/api?username=smartworldarafath&theme=tokyonight&hide_border=false&show_icons=true&include_all_commits=true" alt="GitHub Stats" />
+<img src="https://github-readme-stats-fast.vercel.app/api?username=smartworldarafath&theme=tokyonight&hide_border=false&show_icons=true&include_all_commits=true" alt="GitHub Stats" />
 <img src="https://streak-stats.demolab.com?user=smartworldarafath&theme=tokyonight&hide_border=false" alt="GitHub Streak" />
 
 <br/><br/>
 
-<img src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=smartworldarafath&theme=tokyonight&hide_border=false&layout=compact" alt="Top Languages" />
+<img src="https://github-readme-stats-fast.vercel.app/api/top-langs?username=smartworldarafath&theme=tokyonight&hide_border=false&layout=compact" alt="Top Languages" />
 
 </div>
 
