@@ -21,7 +21,7 @@ Android and software developer focused on native performance, Material 3 Express
 
 - **Building:** High-end native Android apps (Kotlin, Jetpack Compose) and modern web ecosystems.
 - **Design:** Minimalist UI, Material Design 3 Expressive, Liquid Glass and fluid physics-based motion.
-- **Open Source:** Bug fixes, performance optimizations, and [Reverse-Engineer Wi-Fi Router](https://github.com/smartworldarafath/Reverse-Engineer-WiFi-Router) (AI-powered router privacy audit & diagnostic toolkit).
+- **Open Source:** Bug fixes, performance optimizations, and [Reverse Engineering Wi-Fi Router](https://github.com/smartworldarafath/Reverse-Engineer-WiFi-Router) (AI-powered router privacy audit & diagnostic toolkit).
 
 > *If it's not smooth, it's not finished. Obsessed with eliminating lag and perfecting motion.*
 
