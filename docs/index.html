@@ -69,6 +69,25 @@
       transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.5s ease;
     }
 
+    .liquid-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 22%, rgba(255, 255, 255, 0) 52%, rgba(112, 165, 253, 0.04) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .tilt-card:hover {
+      border-color: rgba(255, 255, 255, 0.36) !important;
+      box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.72), 0 0 36px -8px rgba(112, 165, 253, 0.28), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.55) !important;
+    }
+
+    .glow-blue { color: var(--tn-blue); text-shadow: 0 0 18px rgba(112, 165, 253, 0.32); }
+    .glow-purple { color: var(--tn-purple); text-shadow: 0 0 18px rgba(191, 145, 243, 0.32); }
+    .glow-teal { color: var(--tn-teal); text-shadow: 0 0 14px rgba(56, 189, 174, 0.25); }
+
     .glass-glare {
       position: absolute;
       inset: 0;
@@ -175,7 +194,7 @@
     <!-- ========================================================= -->
     <!-- SECTION 1: Hero & Social Liquid Glass Badges              -->
     <!-- ========================================================= -->
-    <section class="liquid-card tilt-card rounded-[2rem] p-6 sm:p-9 bg-white/[0.07] border border-white/20 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.45),0_30px_80px_rgba(0,0,0,0.5)] overflow-hidden text-center">
+    <section class="liquid-card specular-card rounded-[2rem] p-6 sm:p-9 bg-white/[0.07] border border-white/20 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.45),0_30px_80px_rgba(0,0,0,0.5)] overflow-hidden text-center">
       <div class="glass-glare" aria-hidden="true"></div>
       <div class="glass-rim" aria-hidden="true"></div>
 
@@ -228,7 +247,7 @@
     <!-- ========================================================= -->
     <!-- SECTION 2: Tech Stack & Tooling                           -->
     <!-- ========================================================= -->
-    <section class="liquid-card tilt-card rounded-[2rem] p-6 sm:p-8 md:p-10 bg-white/[0.07] border border-white/20 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.45),0_30px_80px_rgba(0,0,0,0.5)] overflow-hidden">
+    <section class="liquid-card specular-card rounded-[2rem] p-6 sm:p-8 md:p-10 bg-white/[0.07] border border-white/20 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.45),0_30px_80px_rgba(0,0,0,0.5)] overflow-hidden">
       <div class="glass-glare" aria-hidden="true"></div>
       <div class="glass-rim" aria-hidden="true"></div>
 
@@ -347,7 +366,7 @@
     <!-- ========================================================= -->
     <!-- SECTION 4: Support / Sponsor                              -->
     <!-- ========================================================= -->
-    <section class="liquid-card tilt-card w-full max-w-2xl mx-auto rounded-[2rem] p-5 sm:p-8 md:p-10 bg-white/[0.07] border border-white/20 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.45),0_30px_80px_rgba(0,0,0,0.5)] overflow-hidden">
+    <section class="liquid-card specular-card w-full max-w-2xl mx-auto rounded-[2rem] p-5 sm:p-8 md:p-10 bg-white/[0.07] border border-white/20 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.45),0_30px_80px_rgba(0,0,0,0.5)] overflow-hidden">
       <div class="glass-glare" aria-hidden="true"></div>
       <div class="glass-rim" aria-hidden="true"></div>
 
@@ -554,7 +573,15 @@
         p.addEventListener('mouseleave', () => { p.style.boxShadow = ''; });
       });
 
-      // 3D tilt + cursor specular glare on all liquid-cards
+      // Specular glare on large panels + 3D tilt on stats cards
+      document.querySelectorAll('.specular-card').forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        });
+      });
+
       document.querySelectorAll('.tilt-card').forEach((card) => {
         card.addEventListener('mousemove', (e) => {
           const rect = card.getBoundingClientRect();
@@ -563,12 +590,12 @@
           card.style.setProperty('--mouse-x', `${x}px`);
           card.style.setProperty('--mouse-y', `${y}px`);
           if (!motionEnabled) return;
-          const rx = (((y - rect.height / 2) / (rect.height / 2)) * -3.5).toFixed(2);
-          const ry = (((x - rect.width / 2) / (rect.width / 2)) * 3.5).toFixed(2);
-          card.style.transform = `perspective(1100px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+          const rx = (((y - rect.height / 2) / (rect.height / 2)) * -4.5).toFixed(2);
+          const ry = (((x - rect.width / 2) / (rect.width / 2)) * 4.5).toFixed(2);
+          card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
         });
         card.addEventListener('mouseleave', () => {
-          card.style.transform = 'perspective(1100px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
         });
       });
 
