@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="516" height="54" viewBox="0 0 516 54" role="img" aria-label="BUY ME A COFFEE BUYMEACOFFEE.COM/ARAFATHRAHMAN">
+  <defs>
+    <clipPath id="bmco_clip">
+      <rect x="4" y="4" width="508" height="46" rx="14" ry="14"/>
+    </clipPath>
+
+    <linearGradient id="bmco_left" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#374151" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#1f2937" stop-opacity="0.92"/>
+    </linearGradient>
+
+    <linearGradient id="bmco_right" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe838"/>
+      <stop offset="50%" stop-color="#ffdd00"/>
+      <stop offset="100%" stop-color="#f5c400"/>
+    </linearGradient>
+
+    <linearGradient id="bmco_bevel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.34"/>
+      <stop offset="48%" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.14"/>
+    </linearGradient>
+
+    <linearGradient id="bmco_shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="bmco_glow" x="-12%" y="-20%" width="124%" height="150%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#ffdd00" flood-opacity="0.30"/>
+    </filter>
+  </defs>
+
+  <rect x="4" y="4" width="508" height="46" rx="14" fill="#000000" opacity="0.2" filter="url(#bmco_glow)"/>
+
+  <g clip-path="url(#bmco_clip)">
+    <!-- Left Smoked Glass Segment -->
+    <rect x="4" y="4" width="186" height="46" fill="url(#bmco_left)"/>
+    <!-- Right Colored Liquid Glass Segment -->
+    <rect x="190" y="4" width="322" height="46" fill="url(#bmco_right)"/>
+    <!-- Glossy Top Bevel Overlay -->
+    <rect x="4" y="4" width="508" height="46" fill="url(#bmco_bevel)"/>
+    <!-- Segment Glass Divider -->
+    <line x1="190" y1="4" x2="190" y2="50" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
+    <!-- Subtle Specular Shimmer -->
+    <polygon points="-50,0 10,0 -12,54 -72,54" fill="url(#bmco_shimmer)">
+      <animateTransform attributeName="transform" type="translate" values="-50 0; 638 0; 638 0" keyTimes="0; 0.22; 1" dur="6.5s" repeatCount="indefinite"/>
+    </polygon>
+  </g>
+
+  <!-- Outer Liquid Glass Border & Top Rim -->
+  <rect x="4.6" y="4.6" width="506.8" height="44.8" rx="13.4" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.2"/>
+  <path d="M 18 5.4 H 498" stroke="#ffffff" stroke-opacity="0.65" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Left Coffee Icon + Text -->
+  <g transform="translate(20, 19) scale(0.70)">
+    <path d="M5 6h12a1 1 0 0 1 1 1v1h1.5a3.5 3.5 0 0 1 0 7H18v1a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V7a1 1 0 0 1 1-1zm13 4v3h1.5a1.5 1.5 0 0 0 0-3H18zM6 3h10a1 1 0 1 1 0 2H6a1 1 0 1 1 0-2z" fill="#fcd34d"/>
+  </g>
+  <text x="45" y="31.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="#f8fafc">BUY ME A COFFEE</text>
+
+  <!-- Right Segment Text -->
+  <text x="351" y="31.5" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="800" letter-spacing="1.6" fill="#0a0a0a">BUYMEACOFFEE.COM/ARAFATHRAHMAN</text>
+</svg>

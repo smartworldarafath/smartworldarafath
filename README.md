@@ -113,12 +113,24 @@ Android and software developer focused on native performance, Material 3 Express
 
 <div align="center">
 
-<img src="https://github-readme-stats-fast.vercel.app/api?username=smartworldarafath&theme=tokyonight&hide_border=false&show_icons=true&include_all_commits=true" alt="GitHub Stats" />
-<img src="https://streak-stats.demolab.com?user=smartworldarafath&theme=tokyonight&hide_border=false" alt="GitHub Streak" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/stats-github.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/stats-github.svg">
+  <img src="assets/readme/dark/stats-github.svg" alt="Arafath Rahman's GitHub Stats" />
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/stats-streak.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/stats-streak.svg">
+  <img src="assets/readme/dark/stats-streak.svg" alt="GitHub Streak Stats" />
+</picture>
 
 <br/><br/>
 
-<img src="https://github-readme-stats-fast.vercel.app/api/top-langs?username=smartworldarafath&theme=tokyonight&hide_border=false&layout=compact" alt="Top Languages" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/stats-langs.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/stats-langs.svg">
+  <img src="assets/readme/dark/stats-langs.svg" alt="Most Used Languages" />
+</picture>
 
 </div>
 
@@ -130,9 +142,13 @@ If you find my open-source work helpful and wish to support ongoing engineering,
 
 <div align="center">
 
-| Method | Details / Direct Link |
-| :--- | :--- |
-| **<img src="assets/icons/supportkori.png" alt="SupportKori" height="16" /> SupportKori** | [https://www.supportkori.com/arafathrahman](https://www.supportkori.com/arafathrahman) |
+<a href="https://www.supportkori.com/arafathrahman" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/support-table.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/support-table.svg">
+    <img src="assets/readme/dark/support-table.svg" alt="SupportKori — https://www.supportkori.com/arafathrahman" />
+  </picture>
+</a>
 <!-- | **<img src="assets/icons/nsave.png" alt="nsave" height="16" /> nsave** | Ntag: `@arafath_rahman9` (Md Arafath Rahman) | -->
 <!-- | **<img src="assets/icons/redotpay.png" alt="RedotPay" height="16" /> RedotPay** | Account ID: `1965421414` | -->
 <!-- | **<img src="assets/icons/payoneer.png" alt="Payoneer" height="16" /> Payoneer** | Email: `arafathrahman710@gmail.com` (Customer ID: 70366820) | -->
@@ -140,7 +156,11 @@ If you find my open-source work helpful and wish to support ongoing engineering,
 <br/>
 
 <a href="https://www.supportkori.com/arafathrahman" target="_blank">
-  <img src="https://img.shields.io/badge/Support-SupportKori-FF5E5B?style=for-the-badge&logo=buymeacoffee&logoColor=white" alt="SupportKori" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/badge-supportkori.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/badge-supportkori.svg">
+    <img src="assets/readme/dark/badge-supportkori.svg" alt="Support | SupportKori" />
+  </picture>
 </a>
 
 </div>
@@ -150,7 +170,11 @@ If you find my open-source work helpful and wish to support ongoing engineering,
 <div align="center">
 
 <a href="SUPPORT.md" target="_blank">
-  <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Support%20Arafath%20Rahman-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black" alt="Buy Me a Coffee" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/badge-bmc.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/badge-bmc.svg">
+    <img src="assets/readme/dark/badge-bmc.svg" alt="Buy Me a Coffee | Support Arafath Rahman" />
+  </picture>
 </a>
 <br/>
 <sub><b>▲ Tap the button for the full support page &mdash; or expand payment options &amp; QR codes below</b></sub>
@@ -194,7 +218,11 @@ If you find my open-source work helpful and wish to support ongoing engineering,
 **Outside Bangladesh?** Cards, Apple Pay &amp; Google Pay:
 
 <a href="https://www.buymeacoffee.com/arafathrahman" target="_blank">
-  <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-buymeacoffee.com%2Farafathrahman-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black" alt="Buy Me a Coffee online" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/badge-bmc-online.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/badge-bmc-online.svg">
+    <img src="assets/readme/dark/badge-bmc-online.svg" alt="Buy Me a Coffee | buymeacoffee.com/arafathrahman" />
+  </picture>
 </a>
 
 </details>

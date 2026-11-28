@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="436" height="206" viewBox="0 0 436 206" role="img" aria-label="Arafath Rahman's GitHub Stats">
+  <defs>
+    <style>
+      @keyframes lg-draw-ring {
+        from { stroke-dashoffset: 251.2; }
+        to { stroke-dashoffset: 90.57; }
+      }
+      .ring-progress {
+        animation: lg-draw-ring 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+    </style>
+    
+    <clipPath id="gs_clip">
+      <rect x="4" y="4" width="428" height="198" rx="22" ry="22"/>
+    </clipPath>
+
+    <linearGradient id="gs_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.88"/>
+           <stop offset="52%" stop-color="#f1f5f9" stop-opacity="0.78"/>
+           <stop offset="100%" stop-color="#e2e8f0" stop-opacity="0.72"/>
+    </linearGradient>
+
+    <linearGradient id="gs_spec" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.65"/>
+           <stop offset="30%" stop-color="#ffffff" stop-opacity="0.12"/>
+           <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.04"/>
+    </linearGradient>
+
+    <linearGradient id="gs_rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98"/>
+           <stop offset="35%" stop-color="#93c5fd" stop-opacity="0.55"/>
+           <stop offset="70%" stop-color="#c4b5fd" stop-opacity="0.45"/>
+           <stop offset="100%" stop-color="#5eead4" stop-opacity="0.55"/>
+    </linearGradient>
+
+    <radialGradient id="gs_orbBlue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#70a5fd" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#70a5fd" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gs_orbPurple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#bf91f3" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#bf91f3" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gs_orbTeal" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdae" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#38bdae" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="gs_well" cx="34%" cy="28%" r="72%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+           <stop offset="70%" stop-color="#e2e8f0" stop-opacity="0.5"/>
+           <stop offset="100%" stop-color="#cbd5e1" stop-opacity="0.45"/>
+    </radialGradient>
+
+    <linearGradient id="gs_ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="55%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+
+    <filter id="gs_cardShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.2" flood-color="#000000" flood-opacity="0.10"/>
+    </filter>
+    <filter id="gs_glowSoft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#70a5fd" flood-opacity="0.22"/>
+    </filter>
+  
+  </defs>
+
+  
+    <!-- Base Drop Shadow -->
+    <rect x="4" y="4" width="428" height="198" rx="22" fill="#e2e8f0" opacity="0.45" filter="url(#gs_cardShadow)"/>
+
+    <!-- Clipped Liquid Glass Interior -->
+    <g clip-path="url(#gs_clip)">
+      <rect x="4" y="4" width="428" height="198" rx="22" fill="url(#gs_bg)"/>
+      <!-- Ambient Liquid Refraction Orbs -->
+      <circle cx="70" cy="37" r="122" fill="url(#gs_orbBlue)"/>
+      <circle cx="375" cy="175" r="113" fill="url(#gs_orbPurple)"/>
+      <circle cx="227" cy="113" r="105" fill="url(#gs_orbTeal)"/>
+      <!-- Specular Curved Reflection -->
+      <rect x="4" y="4" width="428" height="198" rx="22" fill="url(#gs_spec)"/>
+    </g>
+
+    <!-- Chromatic Rim Border -->
+    <rect x="4.6" y="4.6" width="426.8" height="196.8" rx="21.4" fill="none" stroke="url(#gs_rim)" stroke-width="1.2"/>
+    <!-- Top Specular Highlight Line -->
+    <path d="M 34 5.4 H 402" stroke="#ffffff" stroke-opacity="0.95" stroke-width="1" stroke-linecap="round"/>
+  
+
+  <!-- Card Title -->
+  <text x="26" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16.5" font-weight="700" letter-spacing="-0.2" fill="#1d4ed8">Arafath Rahman&apos;s GitHub Stats</text>
+
+  <!-- Stats List -->
+  
+      <g transform="translate(26, 66)">
+        <g transform="translate(0, -12)"><path d="M8 1.75l1.93 3.91 4.32.63-3.12 3.04.74 4.3L8 11.6l-3.87 2.03.74-4.3-3.12-3.04 4.32-.63L8 1.75z" fill="none" stroke="#7c3aed" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <text x="24" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#0f766e">Total Stars Earned:</text>
+        <text x="228" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#0f766e">307</text>
+      </g>
+      <g transform="translate(26, 91)">
+        <g transform="translate(0, -12)"><path d="M1.75 8a6.25 6.25 0 1 0 1.4-3.95" fill="none" stroke="#7c3aed" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.75 2.5v2.75H4.5M8 4.75V8l2.25 1.5" fill="none" stroke="#7c3aed" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <text x="24" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#0f766e">Total Commits:</text>
+        <text x="228" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#0f766e">1.9k</text>
+      </g>
+      <g transform="translate(26, 116)">
+        <g transform="translate(0, -12)"><circle cx="4.5" cy="3.5" r="1.75" fill="none" stroke="#7c3aed" stroke-width="1.4"/><circle cx="4.5" cy="12.5" r="1.75" fill="none" stroke="#7c3aed" stroke-width="1.4"/><circle cx="11.5" cy="12.5" r="1.75" fill="none" stroke="#7c3aed" stroke-width="1.4"/><path d="M4.5 5.25v5.5M11.5 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6" fill="none" stroke="#7c3aed" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <text x="24" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#0f766e">Total PRs:</text>
+        <text x="228" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#0f766e">26</text>
+      </g>
+      <g transform="translate(26, 141)">
+        <g transform="translate(0, -12)"><circle cx="8" cy="8" r="6.25" fill="none" stroke="#7c3aed" stroke-width="1.4"/><path d="M8 4.75v3.75" fill="none" stroke="#7c3aed" stroke-width="1.4" stroke-linecap="round"/><circle cx="8" cy="11.25" r="0.65" fill="#7c3aed"/></g>
+        <text x="24" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#0f766e">Total Issues:</text>
+        <text x="228" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#0f766e">5</text>
+      </g>
+      <g transform="translate(26, 166)">
+        <g transform="translate(0, -12)"><path d="M3.25 2.25h9.5a1 1 0 0 1 1 1v9.5a1 1 0 0 1-1 1h-9.5a1 1 0 0 1-1-1v-9.5a1 1 0 0 1 1-1zM2.25 10.75h11.5M5.5 2.25v8.5" fill="none" stroke="#7c3aed" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <text x="24" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#0f766e">Contributed to (last year):</text>
+        <text x="228" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#0f766e">18</text>
+      </g>
+
+  <!-- Right Circular Grade Ring Inside Glass Well -->
+  <g transform="translate(362, 118)">
+    <circle cx="0" cy="0" r="46" fill="url(#gs_well)" stroke="rgba(148,163,184,0.28)" stroke-width="1"/>
+    <g transform="rotate(-90)" filter="url(#gs_glowSoft)">
+      <circle cx="0" cy="0" r="39" fill="none" stroke="rgba(59, 130, 246, 0.16)" stroke-width="6"/>
+      <circle cx="0" cy="0" r="39" fill="none" stroke="url(#gs_ringGrad)" stroke-width="6" stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="90.57" class="ring-progress"/>
+    </g>
+    <text x="0" y="9" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="25" font-weight="800" fill="#0f766e">A-</text>
+  </g>
+</svg>

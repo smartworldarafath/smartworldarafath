@@ -37,67 +37,154 @@ function renderIcon(iconName, size, color) {
   return `<g transform="translate(${offset}, ${offset}) scale(${scale})">${iconSvg}</g>`;
 }
 
-function generateStackPill({ name, label, icon, flowerDark, flowerLight, iconDark, iconLight, width }) {
-  // Height: 38px, radius: 19px, flower centered at (19, 19)
-  const darkSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="38" viewBox="0 0 ${width} 38">
-  <defs>
-    <style>
-      @keyframes m3e-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-      .m3e-flower-spin { animation: m3e-spin 8s linear infinite; transform-origin: 0px 0px; }
-    </style>
-  </defs>
-  <path d="M19,0H${width - 19}A19,19 0 0 1 ${width},19V19A19,19 0 0 1 ${width - 19},38H19A19,19 0 0 1 0,19V19A19,19 0 0 1 19,0Z" fill="#1e1823" stroke="#362938" stroke-width="1.2"/>
-  <g transform="translate(19, 19)">
-    <g class="m3e-flower-spin">
-      <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="8s" repeatCount="indefinite"/>
-      <path d="${CENTERED_FLOWER_PATH}" fill="${flowerDark}" transform="scale(0.58)"/>
-    </g>
-    ${renderIcon(icon, 15, iconDark)}
-  </g>
-  <text x="38" y="24" font-family="system-ui, -apple-system, Roboto, sans-serif" font-size="13" font-weight="600" fill="#f0e2ee">${label}</text>
-</svg>`;
-  fs.writeFileSync(path.join(darkDir, `pill-${name}.svg`), darkSvg);
+function buildPillSvg({ name, label, icon, gradFrom, gradTo, width }, index, mode) {
+  const isDark = mode === 'dark';
+  const height = 46;
+  const r = 23;
+  const pillW = width;
+  const pad = 2; // subtle outer glow margin so shadow never clips
+  const totalW = pillW + pad * 2;
+  const totalH = height + pad * 2;
+  const spinDelay = `-${(index * 0.55).toFixed(2)}s`;
+  const floatDelay = `-${(index * 0.35).toFixed(2)}s`;
+  const shimmerDelay = `${(index * 0.45).toFixed(2)}s`;
 
-  const lightSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="38" viewBox="0 0 ${width} 38">
+  const glassBodyFill = isDark ? `url(#glassBg_${name})` : `url(#glassBgLight_${name})`;
+  const borderStroke = isDark ? `url(#glassBorder_${name})` : `url(#glassBorderLight_${name})`;
+  const textColor = isDark ? '#f8fafc' : '#0f172a';
+  const sheenOpacity = isDark ? '0.22' : '0.68';
+  const rimColor = isDark ? 'rgba(255,255,255,0.52)' : 'rgba(255,255,255,0.96)';
+  const scallopStroke = isDark ? 'rgba(255,255,255,0.48)' : 'rgba(255,255,255,0.75)';
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${totalW}" height="${totalH}" viewBox="0 0 ${totalW} ${totalH}" role="img" aria-label="${label}">
   <defs>
     <style>
-      @keyframes m3e-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-      .m3e-flower-spin { animation: m3e-spin 8s linear infinite; transform-origin: 0px 0px; }
+      @keyframes lg-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      @keyframes lg-float { 0%, 100% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-1px) scale(1.04); } }
+      .scallop-spin { animation: lg-spin 6s linear infinite; animation-delay: ${spinDelay}; transform-origin: 0px 0px; }
+      .icon-bob { animation: lg-float 3.2s ease-in-out infinite; animation-delay: ${floatDelay}; transform-origin: 0px 0px; }
     </style>
+
+    <clipPath id="pillClip_${name}">
+      <rect x="${pad}" y="${pad}" width="${pillW}" height="${height}" rx="${r}" ry="${r}"/>
+    </clipPath>
+
+    <!-- Scalloped badge gradient -->
+    <linearGradient id="scallopGrad_${name}" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="${gradFrom}"/>
+      <stop offset="100%" stop-color="${gradTo}"/>
+    </linearGradient>
+
+    <!-- Glass body base -->
+    <linearGradient id="glassBg_${name}" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="45%" stop-color="#141826" stop-opacity="0.62"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.06"/>
+    </linearGradient>
+    <linearGradient id="glassBgLight_${name}" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.86"/>
+      <stop offset="55%" stop-color="#f1f5f9" stop-opacity="0.72"/>
+      <stop offset="100%" stop-color="#e2e8f0" stop-opacity="0.62"/>
+    </linearGradient>
+
+    <!-- Chromatic glass rim -->
+    <linearGradient id="glassBorder_${name}" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.48"/>
+      <stop offset="45%" stop-color="${gradFrom}" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="glassBorderLight_${name}" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98"/>
+      <stop offset="50%" stop-color="${gradFrom}" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.32"/>
+    </linearGradient>
+
+    <!-- Top specular glass reflection -->
+    <linearGradient id="topSpec_${name}" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="${sheenOpacity}"/>
+      <stop offset="52%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="${isDark ? '0.16' : '0.03'}"/>
+    </linearGradient>
+
+    <!-- Ambient refraction orb behind badge -->
+    <radialGradient id="orbGlow_${name}" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="${gradFrom}" stop-opacity="${isDark ? '0.42' : '0.28'}"/>
+      <stop offset="100%" stop-color="${gradTo}" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Subtle shimmer highlight -->
+    <linearGradient id="shimmerGrad_${name}" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="${isDark ? '0.18' : '0.42'}"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="badgeGlow_${name}" x="-35%" y="-35%" width="170%" height="170%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="${gradFrom}" flood-opacity="${isDark ? '0.5' : '0.35'}"/>
+    </filter>
   </defs>
-  <path d="M19,0H${width - 19}A19,19 0 0 1 ${width},19V19A19,19 0 0 1 ${width - 19},38H19A19,19 0 0 1 0,19V19A19,19 0 0 1 19,0Z" fill="#f4ebf5" stroke="#ddcfdc" stroke-width="1.2"/>
-  <g transform="translate(19, 19)">
-    <g class="m3e-flower-spin">
-      <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="8s" repeatCount="indefinite"/>
-      <path d="${CENTERED_FLOWER_PATH}" fill="${flowerLight}" transform="scale(0.58)"/>
+
+  <!-- Clipped Liquid Glass Pill Interior -->
+  <g clip-path="url(#pillClip_${name})">
+    <rect x="${pad}" y="${pad}" width="${pillW}" height="${height}" rx="${r}" fill="${glassBodyFill}"/>
+    <!-- Color-matched ambient glow refracting inside the glass -->
+    <circle cx="${pad + 26}" cy="${pad + 23}" r="34" fill="url(#orbGlow_${name})"/>
+    <!-- Top glass reflection -->
+    <rect x="${pad}" y="${pad}" width="${pillW}" height="${height}" rx="${r}" fill="url(#topSpec_${name})"/>
+    <!-- Subtle periodic specular shimmer -->
+    <g opacity="0.7">
+      <polygon points="-40,0 10,0 -10,${totalH} -60,${totalH}" fill="url(#shimmerGrad_${name})">
+        <animateTransform attributeName="transform" type="translate" values="-40 0; ${pillW + 120} 0; ${pillW + 120} 0" keyTimes="0; 0.22; 1" dur="7s" begin="${shimmerDelay}" repeatCount="indefinite"/>
+      </polygon>
     </g>
-    ${renderIcon(icon, 15, iconLight)}
   </g>
-  <text x="38" y="24" font-family="system-ui, -apple-system, Roboto, sans-serif" font-size="13" font-weight="600" fill="#261b28">${label}</text>
+
+  <!-- Outer Liquid Glass Border -->
+  <rect x="${pad + 0.6}" y="${pad + 0.6}" width="${pillW - 1.2}" height="${height - 1.2}" rx="${r - 0.6}" fill="none" stroke="${borderStroke}" stroke-width="1.2"/>
+
+  <!-- Top Specular Rim Highlight -->
+  <path d="M ${pad + r} ${pad + 1.5} H ${pad + pillW - r}" stroke="${rimColor}" stroke-width="1" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- Animated Scalloped Badge + Upright Floating Icon -->
+  <g transform="translate(${pad + 23}, ${pad + 23})">
+    <g class="scallop-spin" filter="url(#badgeGlow_${name})">
+      <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="6s" repeatCount="indefinite"/>
+      <path d="${CENTERED_FLOWER_PATH}" fill="url(#scallopGrad_${name})" stroke="${scallopStroke}" stroke-width="1.2" transform="scale(0.62)"/>
+    </g>
+    <g class="icon-bob">
+      ${renderIcon(icon, 16, '#FFFFFF')}
+    </g>
+  </g>
+
+  <!-- Pill Label -->
+  <text x="${pad + 47}" y="${pad + 27.5}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" letter-spacing="-0.15" fill="${textColor}">${label}</text>
 </svg>`;
-  fs.writeFileSync(path.join(lightDir, `pill-${name}.svg`), lightSvg);
 }
 
-// Generate Tech Stack Pills
+// Tech Stack Pills matching README order & Liquid Glass palette
 const stack = [
-  // Languages & Core
-  { name: 'kotlin', label: 'Kotlin', icon: 'kotlin', flowerDark: '#7F52FF', flowerLight: '#E8DDFF', iconDark: '#FFFFFF', iconLight: '#2A0054', width: 105 },
-  { name: 'java', label: 'Java', icon: 'java', flowerDark: '#D47600', flowerLight: '#FFE0B2', iconDark: '#FFFFFF', iconLight: '#3E1C00', width: 95 },
-  { name: 'ts', label: 'TypeScript', icon: 'ts', flowerDark: '#2B4A75', flowerLight: '#D0E1FD', iconDark: '#FFFFFF', iconLight: '#071E3D', width: 135 },
-  { name: 'js', label: 'JavaScript', icon: 'js', flowerDark: '#B28E00', flowerLight: '#FFF59D', iconDark: '#FFFFFF', iconLight: '#332600', width: 135 },
-  { name: 'python', label: 'Python', icon: 'python', flowerDark: '#2B5B84', flowerLight: '#CFE8FC', iconDark: '#FFFFFF', iconLight: '#06233B', width: 110 },
-  { name: 'c', label: 'C / C++', icon: 'c', flowerDark: '#00599C', flowerLight: '#D1E4F6', iconDark: '#FFFFFF', iconLight: '#00203D', width: 115 },
-  { name: 'dotnet', label: '.NET', icon: 'dotnet', flowerDark: '#512BD4', flowerLight: '#E6DEFC', iconDark: '#FFFFFF', iconLight: '#180054', width: 95 },
+  // Languages & Core Systems
+  { name: 'kotlin', label: 'Kotlin', icon: 'kotlin', gradFrom: '#9b6bff', gradTo: '#6d28d9', width: 108 },
+  { name: 'java', label: 'Java', icon: 'java', gradFrom: '#fb923c', gradTo: '#c2410c', width: 98 },
+  { name: 'ts', label: 'TypeScript', icon: 'ts', gradFrom: '#4b83c3', gradTo: '#244b7a', width: 138 },
+  { name: 'js', label: 'JavaScript', icon: 'js', gradFrom: '#eab308', gradTo: '#a16207', width: 138 },
+  { name: 'python', label: 'Python', icon: 'python', gradFrom: '#3b82b6', gradTo: '#1e4e79', width: 114 },
+  { name: 'c', label: 'C / C++', icon: 'c', gradFrom: '#0ea5e9', gradTo: '#0369a1', width: 118 },
+  { name: 'dotnet', label: '.NET', icon: 'dotnet', gradFrom: '#818cf8', gradTo: '#4f46e5', width: 98 },
 
-  // Platforms, Cloud & Tools
-  { name: 'android', label: 'Android Native', icon: 'android', flowerDark: '#2D8E53', flowerLight: '#C8E6C9', iconDark: '#FFFFFF', iconLight: '#003314', width: 155 },
-  { name: 'compose', label: 'Jetpack Compose', icon: 'compose', flowerDark: '#1E6BB8', flowerLight: '#D2E3FC', iconDark: '#FFFFFF', iconLight: '#00264D', width: 175 },
-  { name: 'gcp', label: 'Google Cloud', icon: 'gcp', flowerDark: '#3367D6', flowerLight: '#D2E3FC', iconDark: '#FFFFFF', iconLight: '#002266', width: 145 },
-  { name: 'firebase', label: 'Firebase', icon: 'firebase', flowerDark: '#D97706', flowerLight: '#FFE082', iconDark: '#FFFFFF', iconLight: '#451A03', width: 120 },
-  { name: 'linux', label: 'Linux', icon: 'linux', flowerDark: '#785A00', flowerLight: '#FFF176', iconDark: '#FFFFFF', iconLight: '#332600', width: 100 },
-  { name: 'git', label: 'Git', icon: 'git', flowerDark: '#C43D2A', flowerLight: '#FFCDD2', iconDark: '#FFFFFF', iconLight: '#4D0800', width: 90 },
-  { name: 'figma', label: 'Figma', icon: 'figma', flowerDark: '#A23B1E', flowerLight: '#FFCCBC', iconDark: '#FFFFFF', iconLight: '#4A1000', width: 105 }
+  // Platforms, Cloud & Infrastructure
+  { name: 'android', label: 'Android Native', icon: 'android', gradFrom: '#34d399', gradTo: '#15803d', width: 162 },
+  { name: 'compose', label: 'Jetpack Compose', icon: 'compose', gradFrom: '#38bdf8', gradTo: '#1d4ed8', width: 184 },
+  { name: 'gcp', label: 'Google Cloud', icon: 'gcp', gradFrom: '#60a5fa', gradTo: '#2563eb', width: 154 },
+  { name: 'firebase', label: 'Firebase', icon: 'firebase', gradFrom: '#fbbf24', gradTo: '#ea580c', width: 124 },
+  { name: 'linux', label: 'Linux', icon: 'linux', gradFrom: '#a16207', gradTo: '#713f12', width: 104 },
+  { name: 'git', label: 'Git', icon: 'git', gradFrom: '#f87171', gradTo: '#b91c1c', width: 92 },
+  { name: 'figma', label: 'Figma', icon: 'figma', gradFrom: '#ea580c', gradTo: '#9a3412', width: 108 }
 ];
 
-stack.forEach(generateStackPill);
-console.log(`Generated ${stack.length} Material 3 Expressive animated stack pills in dark and light themes!`);
+stack.forEach((item, index) => {
+  fs.writeFileSync(path.join(darkDir, `pill-${item.name}.svg`), buildPillSvg(item, index, 'dark'));
+  fs.writeFileSync(path.join(lightDir, `pill-${item.name}.svg`), buildPillSvg(item, index, 'light'));
+});
+
+console.log(`Generated ${stack.length} Liquid Glass animated stack pills in dark and light themes!`);

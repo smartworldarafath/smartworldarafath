@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="200" viewBox="0 0 440 200" role="img" aria-label="Most Used Languages">
+  <defs>
+    
+    <clipPath id="lg_clip">
+      <rect x="4" y="4" width="432" height="192" rx="22" ry="22"/>
+    </clipPath>
+
+    <linearGradient id="lg_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.105"/>
+           <stop offset="48%" stop-color="#1a1b27" stop-opacity="0.68"/>
+           <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <linearGradient id="lg_spec" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+           <stop offset="22%" stop-color="#ffffff" stop-opacity="0.04"/>
+           <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
+           <stop offset="100%" stop-color="#70a5fd" stop-opacity="0.06"/>
+    </linearGradient>
+
+    <linearGradient id="lg_rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.5"/>
+           <stop offset="32%" stop-color="#70a5fd" stop-opacity="0.32"/>
+           <stop offset="68%" stop-color="#bf91f3" stop-opacity="0.28"/>
+           <stop offset="100%" stop-color="#38bdae" stop-opacity="0.42"/>
+    </linearGradient>
+
+    <radialGradient id="lg_orbBlue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#70a5fd" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#70a5fd" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lg_orbPurple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#bf91f3" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#bf91f3" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lg_orbTeal" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdae" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#38bdae" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="lg_well" cx="34%" cy="28%" r="72%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.11"/>
+           <stop offset="65%" stop-color="#0b1020" stop-opacity="0.25"/>
+           <stop offset="100%" stop-color="#000000" stop-opacity="0.36"/>
+    </radialGradient>
+
+    <linearGradient id="lg_ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9cc2ff"/>
+      <stop offset="55%" stop-color="#70a5fd"/>
+      <stop offset="100%" stop-color="#5b8def"/>
+    </linearGradient>
+
+    <filter id="lg_cardShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.2" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <filter id="lg_glowSoft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#70a5fd" flood-opacity="0.45"/>
+    </filter>
+  
+    <clipPath id="lg_barClip">
+      <rect x="28" y="58" width="384" height="11" rx="5.5" ry="5.5"/>
+    </clipPath>
+    <linearGradient id="lg_barSheen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.42"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.22"/>
+    </linearGradient>
+  </defs>
+
+  
+    <!-- Base Drop Shadow -->
+    <rect x="4" y="4" width="432" height="192" rx="22" fill="#0b0f1a" opacity="0.78" filter="url(#lg_cardShadow)"/>
+
+    <!-- Clipped Liquid Glass Interior -->
+    <g clip-path="url(#lg_clip)">
+      <rect x="4" y="4" width="432" height="192" rx="22" fill="url(#lg_bg)"/>
+      <!-- Ambient Liquid Refraction Orbs -->
+      <circle cx="70" cy="36" r="123" fill="url(#lg_orbBlue)"/>
+      <circle cx="378" cy="170" r="114" fill="url(#lg_orbPurple)"/>
+      <circle cx="229" cy="110" r="106" fill="url(#lg_orbTeal)"/>
+      <!-- Specular Curved Reflection -->
+      <rect x="4" y="4" width="432" height="192" rx="22" fill="url(#lg_spec)"/>
+    </g>
+
+    <!-- Chromatic Rim Border -->
+    <rect x="4.6" y="4.6" width="430.8" height="190.8" rx="21.4" fill="none" stroke="url(#lg_rim)" stroke-width="1.2"/>
+    <!-- Top Specular Highlight Line -->
+    <path d="M 34 5.4 H 406" stroke="#ffffff" stroke-opacity="0.52" stroke-width="1" stroke-linecap="round"/>
+  
+
+  <!-- Card Title -->
+  <text x="28" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16.5" font-weight="700" letter-spacing="-0.2" fill="#70a5fd">Most Used Languages</text>
+
+  <!-- Liquid Glass Stacked Language Track -->
+  <rect x="28" y="58" width="384" height="11" rx="5.5" fill="rgba(255,255,255,0.08)"/>
+  <g clip-path="url(#lg_barClip)">
+    <rect x="28.00" y="58" width="346.03" height="11" fill="#858585"/><rect x="374.03" y="58" width="21.31" height="11" fill="#b07219"/><rect x="395.34" y="58" width="7.06" height="11" fill="#f34b7d"/><rect x="402.40" y="58" width="3.76" height="11" fill="#A97BFF"/><rect x="406.16" y="58" width="3.23" height="11" fill="#00B4AB"/><rect x="409.39" y="58" width="2.61" height="11" fill="#3178c6"/>
+    <rect x="28" y="58" width="384" height="11" fill="url(#lg_barSheen)"/>
+  </g>
+  <rect x="28" y="58" width="384" height="11" rx="5.5" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="0.8"/>
+
+  <!-- 2-Column Languages Grid -->
+  
+        <g transform="translate(28, 104)">
+          <circle cx="6" cy="-4.5" r="5.5" fill="#858585"/>
+          <circle cx="4.5" cy="-6" r="1.8" fill="#ffffff" opacity="0.45"/>
+          <text x="19" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#38bdae">Smali 90.12%</text>
+        </g>
+        <g transform="translate(28, 132)">
+          <circle cx="6" cy="-4.5" r="5.5" fill="#b07219"/>
+          <circle cx="4.5" cy="-6" r="1.8" fill="#ffffff" opacity="0.45"/>
+          <text x="19" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#38bdae">Java 5.55%</text>
+        </g>
+        <g transform="translate(28, 160)">
+          <circle cx="6" cy="-4.5" r="5.5" fill="#f34b7d"/>
+          <circle cx="4.5" cy="-6" r="1.8" fill="#ffffff" opacity="0.45"/>
+          <text x="19" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#38bdae">C++ 1.84%</text>
+        </g>
+  
+        <g transform="translate(224, 104)">
+          <circle cx="6" cy="-4.5" r="5.5" fill="#A97BFF"/>
+          <circle cx="4.5" cy="-6" r="1.8" fill="#ffffff" opacity="0.45"/>
+          <text x="19" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#38bdae">Kotlin 0.98%</text>
+        </g>
+        <g transform="translate(224, 132)">
+          <circle cx="6" cy="-4.5" r="5.5" fill="#00B4AB"/>
+          <circle cx="4.5" cy="-6" r="1.8" fill="#ffffff" opacity="0.45"/>
+          <text x="19" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#38bdae">Dart 0.84%</text>
+        </g>
+        <g transform="translate(224, 160)">
+          <circle cx="6" cy="-4.5" r="5.5" fill="#3178c6"/>
+          <circle cx="4.5" cy="-6" r="1.8" fill="#ffffff" opacity="0.45"/>
+          <text x="19" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#38bdae">TypeScript 0.68%</text>
+        </g>
+</svg>
