@@ -36,6 +36,7 @@ const FALLBACK_DATA = {
     { name: 'Dart', percent: '0.84%', widthPct: 0.84, color: '#00b4ab' },
     { name: 'TypeScript', percent: '0.68%', widthPct: 0.68, color: '#3178c6' },
   ],
+  profileViews: '985',
 };
 
 async function fetchText(url, timeoutMs = 12000) {
@@ -215,6 +216,11 @@ function cardChromeDefs(idPrefix, width, height, mode) {
     <filter id="${idPrefix}_glowSoft" x="-30%" y="-30%" width="160%" height="160%">
       <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#70a5fd" flood-opacity="${isDark ? '0.45' : '0.22'}"/>
     </filter>
+    <linearGradient id="${idPrefix}_shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="${isDark ? '0.12' : '0.34'}"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
   `;
 }
 
@@ -224,6 +230,12 @@ function cardChromeBody(idPrefix, width, height, mode) {
   const pad = 4;
   const cardW = width - pad * 2;
   const cardH = height - pad * 2;
+  const ox1 = Math.round(width * 0.16);
+  const oy1 = Math.round(height * 0.18);
+  const ox2 = Math.round(width * 0.86);
+  const oy2 = Math.round(height * 0.85);
+  const ox3 = Math.round(width * 0.52);
+  const oy3 = Math.round(height * 0.55);
 
   return `
     <!-- Base Drop Shadow -->
@@ -232,12 +244,24 @@ function cardChromeBody(idPrefix, width, height, mode) {
     <!-- Clipped Liquid Glass Interior -->
     <g clip-path="url(#${idPrefix}_clip)">
       <rect x="${pad}" y="${pad}" width="${cardW}" height="${cardH}" rx="${r}" fill="url(#${idPrefix}_bg)"/>
-      <!-- Ambient Liquid Refraction Orbs -->
-      <circle cx="${Math.round(width * 0.16)}" cy="${Math.round(height * 0.18)}" r="${Math.round(width * 0.28)}" fill="url(#${idPrefix}_orbBlue)"/>
-      <circle cx="${Math.round(width * 0.86)}" cy="${Math.round(height * 0.85)}" r="${Math.round(width * 0.26)}" fill="url(#${idPrefix}_orbPurple)"/>
-      <circle cx="${Math.round(width * 0.52)}" cy="${Math.round(height * 0.55)}" r="${Math.round(width * 0.24)}" fill="url(#${idPrefix}_orbTeal)"/>
+      <!-- Ambient Liquid Refraction Orbs (continuous gentle drift) -->
+      <circle cx="${ox1}" cy="${oy1}" r="${Math.round(width * 0.28)}" fill="url(#${idPrefix}_orbBlue)">
+        <animate attributeName="cx" values="${ox1};${ox1 + 28};${ox1 - 16};${ox1}" dur="14s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="${oy1};${oy1 + 20};${oy1 - 12};${oy1}" dur="14s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="${ox2}" cy="${oy2}" r="${Math.round(width * 0.26)}" fill="url(#${idPrefix}_orbPurple)">
+        <animate attributeName="cx" values="${ox2};${ox2 - 26};${ox2 + 14};${ox2}" dur="16s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="${oy2};${oy2 - 18};${oy2 + 12};${oy2}" dur="16s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="${ox3}" cy="${oy3}" r="${Math.round(width * 0.24)}" fill="url(#${idPrefix}_orbTeal)">
+        <animate attributeName="cx" values="${ox3};${ox3 + 22};${ox3 - 22};${ox3}" dur="12s" repeatCount="indefinite"/>
+      </circle>
       <!-- Specular Curved Reflection -->
       <rect x="${pad}" y="${pad}" width="${cardW}" height="${cardH}" rx="${r}" fill="url(#${idPrefix}_spec)"/>
+      <!-- Periodic Specular Shimmer Sweep -->
+      <polygon points="-90,0 16,0 -26,${height} -132,${height}" fill="url(#${idPrefix}_shimmer)">
+        <animateTransform attributeName="transform" type="translate" values="-90 0; ${width + 180} 0; ${width + 180} 0" keyTimes="0; 0.22; 1" dur="8s" repeatCount="indefinite"/>
+      </polygon>
     </g>
 
     <!-- Chromatic Rim Border -->
@@ -372,7 +396,9 @@ function buildStreakSvg(data, mode) {
     <circle cx="0" cy="0" r="39" fill="none" stroke="url(#st_ringGrad)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="210 36" transform="rotate(-64)" filter="url(#st_glowSoft)"/>
     <!-- Flame Icon sitting in top gap -->
     <g transform="translate(-11, -50)" filter="url(#st_glowSoft)">
-      <path d="M12.9 2.3c.2 2.4-1.3 4.2-2.8 5.6-1.4 1.3-2.6 2.8-2.6 5.1 0 2.7 2.1 5 4.8 5 3.1 0 5.4-2.5 5.4-5.9 0-2.6-1.3-4.9-2.8-6.6-.2 1.2-.8 2.2-1.7 2.8.5-2.1.4-4.2-.3-6zm-.6 13.7c-1.4 0-2.5-1.1-2.5-2.5 0-1.1.6-2 1.6-2.9.8-.7 1.4-1.4 1.7-2.2.8 1.2 1.5 2.5 1.5 4.2 0 1.9-1 3.4-2.3 3.4z" fill="${blueColor}"/>
+      <path d="M12.9 2.3c.2 2.4-1.3 4.2-2.8 5.6-1.4 1.3-2.6 2.8-2.6 5.1 0 2.7 2.1 5 4.8 5 3.1 0 5.4-2.5 5.4-5.9 0-2.6-1.3-4.9-2.8-6.6-.2 1.2-.8 2.2-1.7 2.8.5-2.1.4-4.2-.3-6zm-.6 13.7c-1.4 0-2.5-1.1-2.5-2.5 0-1.1.6-2 1.6-2.9.8-.7 1.4-1.4 1.7-2.2.8 1.2 1.5 2.5 1.5 4.2 0 1.9-1 3.4-2.3 3.4z" fill="${blueColor}">
+        <animate attributeName="opacity" values="0.78;1;0.78" dur="2.2s" repeatCount="indefinite"/>
+      </path>
     </g>
     <text x="0" y="9" font-family="${font}" font-size="27" font-weight="800" fill="${purpleColor}">${escapeXml(data.currentStreak)}</text>
     <text x="0" y="61" font-family="${font}" font-size="13.5" font-weight="700" fill="${purpleColor}">Current Streak</text>
@@ -462,10 +488,88 @@ function buildLangsSvg(langs, mode) {
 </svg>`;
 }
 
+function parseProfileViewsSvg(svg) {
+  const matches = [...svg.matchAll(/<text[^>]*>([^<]+)<\/text>/gi)].map((m) => m[1].trim());
+  const count = [...matches].reverse().find((val) => /^[\d,]+$/.test(val));
+  return count || null;
+}
+
+function buildProfileViewsBadgeSvg(views, mode) {
+  const isDark = mode === 'dark';
+  const font = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
+  const leftWidth = 128;
+  const rightWidth = Math.max(54, 24 + String(views).length * 9);
+  const width = leftWidth + rightWidth;
+  const height = 36;
+  const pad = 3;
+  const totalW = width + pad * 2;
+  const totalH = height + pad * 2;
+  const r = 12;
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${totalW}" height="${totalH}" viewBox="0 0 ${totalW} ${totalH}" role="img" aria-label="Profile Views ${escapeXml(views)}">
+  <defs>
+    <clipPath id="pv_clip">
+      <rect x="${pad}" y="${pad}" width="${width}" height="${height}" rx="${r}" ry="${r}"/>
+    </clipPath>
+
+    <linearGradient id="pv_left" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="${isDark ? '#2a2a36' : '#334155'}" stop-opacity="${isDark ? '0.82' : '0.88'}"/>
+      <stop offset="100%" stop-color="${isDark ? '#141824' : '#1e293b'}" stop-opacity="${isDark ? '0.90' : '0.94'}"/>
+    </linearGradient>
+
+    <linearGradient id="pv_right" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8bb8fe"/>
+      <stop offset="50%" stop-color="#70a5fd"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+
+    <linearGradient id="pv_bevel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.34"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.14"/>
+    </linearGradient>
+
+    <linearGradient id="pv_shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="pv_glow" x="-15%" y="-25%" width="130%" height="150%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#70a5fd" flood-opacity="${isDark ? '0.45' : '0.30'}"/>
+    </filter>
+  </defs>
+
+  <rect x="${pad}" y="${pad}" width="${width}" height="${height}" rx="${r}" fill="#000000" opacity="0.18" filter="url(#pv_glow)"/>
+
+  <g clip-path="url(#pv_clip)">
+    <rect x="${pad}" y="${pad}" width="${leftWidth}" height="${height}" fill="url(#pv_left)"/>
+    <rect x="${pad + leftWidth}" y="${pad}" width="${rightWidth}" height="${height}" fill="url(#pv_right)"/>
+    <rect x="${pad}" y="${pad}" width="${width}" height="${height}" fill="url(#pv_bevel)"/>
+    <line x1="${pad + leftWidth}" y1="${pad}" x2="${pad + leftWidth}" y2="${pad + height}" stroke="#ffffff" stroke-opacity="0.28" stroke-width="1"/>
+    <polygon points="-40,0 8,0 -10,${totalH} -58,${totalH}" fill="url(#pv_shimmer)">
+      <animateTransform attributeName="transform" type="translate" values="-40 0; ${width + 110} 0; ${width + 110} 0" keyTimes="0; 0.22; 1" dur="7s" begin="1.8s" repeatCount="indefinite"/>
+    </polygon>
+  </g>
+
+  <rect x="${pad + 0.6}" y="${pad + 0.6}" width="${width - 1.2}" height="${height - 1.2}" rx="${r - 0.6}" fill="none" stroke="#ffffff" stroke-opacity="${isDark ? '0.38' : '0.68'}" stroke-width="1.2"/>
+  <path d="M ${pad + r} ${pad + 1.3} H ${pad + width - r}" stroke="#ffffff" stroke-opacity="0.68" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Eye Icon -->
+  <g transform="translate(${pad + 12}, ${pad + 11}) scale(0.60)" fill="none" stroke="#9cc2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+    <circle cx="12" cy="12" r="3"/>
+  </g>
+  <text x="${pad + 32}" y="${pad + 22}" font-family="${font}" font-size="11" font-weight="600" letter-spacing="0.6" fill="#f8fafc">PROFILE VIEWS</text>
+  <text x="${pad + leftWidth + rightWidth / 2}" y="${pad + 22.5}" text-anchor="middle" font-family="${font}" font-size="12.5" font-weight="800" fill="#071224">${escapeXml(views)}</text>
+</svg>`;
+}
+
 async function main() {
   let stats = FALLBACK_DATA.stats;
   let streak = FALLBACK_DATA.streak;
   let langs = FALLBACK_DATA.langs;
+  let profileViews = FALLBACK_DATA.profileViews;
 
   try {
     const statsSvg = await fetchText(
@@ -497,14 +601,39 @@ async function main() {
     console.warn('Using fallback languages data:', err.message);
   }
 
+  try {
+    const viewsSvg = await fetchText(
+      `https://komarev.com/ghpvc/?username=${USERNAME}&color=70a5fd&style=flat-square&label=Profile+Views`
+    );
+    const parsedViews = parseProfileViewsSvg(viewsSvg);
+    if (parsedViews) profileViews = parsedViews;
+  } catch (err) {
+    console.warn('Using fallback profile views data:', err.message);
+  }
+
   for (const mode of ['dark', 'light']) {
     const outDir = mode === 'dark' ? darkDir : lightDir;
     fs.writeFileSync(path.join(outDir, 'stats-github.svg'), buildGithubStatsSvg(stats, mode));
     fs.writeFileSync(path.join(outDir, 'stats-streak.svg'), buildStreakSvg(streak, mode));
     fs.writeFileSync(path.join(outDir, 'stats-langs.svg'), buildLangsSvg(langs, mode));
+    fs.writeFileSync(path.join(outDir, 'badge-profile-views.svg'), buildProfileViewsBadgeSvg(profileViews, mode));
   }
 
-  console.log('Generated Liquid Glass GitHub stats SVGs:', { stats, streak, langsCount: langs.length });
+  const docsDir = path.join(profileDir, 'docs');
+  fs.mkdirSync(docsDir, { recursive: true });
+  const statsPayload = {
+    updatedAt: new Date().toISOString(),
+    stats,
+    streak,
+    langs,
+    profileViews,
+  };
+  fs.writeFileSync(
+    path.join(docsDir, 'stats-data.js'),
+    `window.PROFILE_STATS = ${JSON.stringify(statsPayload, null, 2)};\n`
+  );
+
+  console.log('Generated Liquid Glass GitHub stats SVGs:', { stats, streak, langsCount: langs.length, profileViews });
 }
 
 main().catch((err) => {

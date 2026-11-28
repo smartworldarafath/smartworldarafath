@@ -65,6 +65,11 @@
     <filter id="gs_glowSoft" x="-30%" y="-30%" width="160%" height="160%">
       <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#70a5fd" flood-opacity="0.45"/>
     </filter>
+    <linearGradient id="gs_shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
   
   </defs>
 
@@ -75,12 +80,24 @@
     <!-- Clipped Liquid Glass Interior -->
     <g clip-path="url(#gs_clip)">
       <rect x="4" y="4" width="428" height="198" rx="22" fill="url(#gs_bg)"/>
-      <!-- Ambient Liquid Refraction Orbs -->
-      <circle cx="70" cy="37" r="122" fill="url(#gs_orbBlue)"/>
-      <circle cx="375" cy="175" r="113" fill="url(#gs_orbPurple)"/>
-      <circle cx="227" cy="113" r="105" fill="url(#gs_orbTeal)"/>
+      <!-- Ambient Liquid Refraction Orbs (continuous gentle drift) -->
+      <circle cx="70" cy="37" r="122" fill="url(#gs_orbBlue)">
+        <animate attributeName="cx" values="70;98;54;70" dur="14s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="37;57;25;37" dur="14s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="375" cy="175" r="113" fill="url(#gs_orbPurple)">
+        <animate attributeName="cx" values="375;349;389;375" dur="16s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="175;157;187;175" dur="16s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="227" cy="113" r="105" fill="url(#gs_orbTeal)">
+        <animate attributeName="cx" values="227;249;205;227" dur="12s" repeatCount="indefinite"/>
+      </circle>
       <!-- Specular Curved Reflection -->
       <rect x="4" y="4" width="428" height="198" rx="22" fill="url(#gs_spec)"/>
+      <!-- Periodic Specular Shimmer Sweep -->
+      <polygon points="-90,0 16,0 -26,206 -132,206" fill="url(#gs_shimmer)">
+        <animateTransform attributeName="transform" type="translate" values="-90 0; 616 0; 616 0" keyTimes="0; 0.22; 1" dur="8s" repeatCount="indefinite"/>
+      </polygon>
     </g>
 
     <!-- Chromatic Rim Border -->

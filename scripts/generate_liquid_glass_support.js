@@ -66,6 +66,12 @@ function buildSupportTableSvg(mode) {
       <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
     </radialGradient>
 
+    <linearGradient id="supTbl_shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="${isDark ? '0.14' : '0.35'}"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
     <filter id="supTbl_shadow" x="-10%" y="-15%" width="120%" height="140%">
       <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000000" flood-opacity="${isDark ? '0.35' : '0.10'}"/>
     </filter>
@@ -78,11 +84,22 @@ function buildSupportTableSvg(mode) {
 
   <g clip-path="url(#supTbl_clip)">
     <rect x="${pad}" y="${pad}" width="${cardW}" height="${cardH}" rx="${r}" fill="url(#supTbl_bg)"/>
-    <circle cx="85" cy="24" r="110" fill="url(#supTbl_orbRose)"/>
-    <circle cx="480" cy="100" r="115" fill="url(#supTbl_orbAmber)"/>
+    <circle cx="85" cy="24" r="110" fill="url(#supTbl_orbRose)">
+      <animate attributeName="cx" values="85;125;70;85" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="24;42;18;24" dur="12s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="480" cy="100" r="115" fill="url(#supTbl_orbAmber)">
+      <animate attributeName="cx" values="480;435;495;480" dur="14s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="100;76;108;100" dur="14s" repeatCount="indefinite"/>
+    </circle>
 
     <!-- Header Row Tint -->
     <rect x="${pad}" y="${pad}" width="${cardW}" height="46" fill="${isDark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.45)'}"/>
+
+    <!-- Periodic Liquid Glass Specular Shimmer -->
+    <polygon points="-80,0 18,0 -22,${height} -120,${height}" fill="url(#supTbl_shimmer)">
+      <animateTransform attributeName="transform" type="translate" values="-80 0; ${width + 160} 0; ${width + 160} 0" keyTimes="0; 0.24; 1" dur="7.5s" repeatCount="indefinite"/>
+    </polygon>
 
     <!-- Table Hairlines -->
     <line x1="${pad}" y1="${pad + 46}" x2="${pad + cardW}" y2="${pad + 46}" stroke="${dividerColor}" stroke-width="1"/>

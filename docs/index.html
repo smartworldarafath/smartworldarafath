@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md Arafath Rahman — Liquid Glass GitHub Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          keyframes: {
+            floatSlow: {
+              '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(34px, -26px) scale(1.07)' },
+              '66%': { transform: 'translate(-26px, 24px) scale(0.95)' },
+            },
+            floatReverse: {
+              '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(-32px, 28px) scale(1.06)' },
+              '66%': { transform: 'translate(26px, -22px) scale(0.96)' },
+            },
+            shimmerSweep: {
+              '0%': { transform: 'translateX(-150%) skewX(-24deg)' },
+              '100%': { transform: 'translateX(260%) skewX(-24deg)' },
+            },
+            spinScallop: {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg)' },
+            },
+            iconFloat: {
+              '0%, 100%': { transform: 'translateY(0px) scale(1)' },
+              '50%': { transform: 'translateY(-1px) scale(1.04)' },
+            },
+          },
+          animation: {
+            'float-slow': 'floatSlow 15s ease-in-out infinite',
+            'float-reverse': 'floatReverse 19s ease-in-out infinite',
+            'shimmer-sweep': 'shimmerSweep 1.1s cubic-bezier(0.22, 1, 0.36, 1)',
+            'spin-scallop': 'spinScallop 6s linear infinite',
+            'icon-float': 'iconFloat 3.2s ease-in-out infinite',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --tn-blue: #70a5fd;
+      --tn-purple: #bf91f3;
+      --tn-teal: #38bdae;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    .liquid-card {
+      position: relative;
+      backdrop-filter: blur(28px) saturate(190%) brightness(1.06);
+      -webkit-backdrop-filter: blur(28px) saturate(190%) brightness(1.06);
+      transform-style: preserve-3d;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.5s ease;
+    }
+
+    .glass-glare {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      background: radial-gradient(360px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.18) 0%, rgba(112, 165, 253, 0.08) 32%, transparent 68%);
+    }
+
+    body.theme-frosted .glass-glare {
+      background: radial-gradient(380px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.72) 0%, rgba(147, 197, 253, 0.18) 34%, transparent 68%);
+    }
+
+    .liquid-card:hover .glass-glare {
+      opacity: 1;
+    }
+
+    .glass-rim {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(130deg, rgba(255, 255, 255, 0.45) 0%, rgba(112, 165, 253, 0.25) 32%, rgba(191, 145, 243, 0.22) 65%, rgba(56, 189, 174, 0.35) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0.78;
+    }
+
+    .gauge-glass-well {
+      background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.09), rgba(0, 0, 0, 0.22));
+      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.22), inset 0 -2px 6px rgba(0, 0, 0, 0.35);
+    }
+
+    body.theme-frosted .gauge-glass-well {
+      background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.92), rgba(203, 213, 225, 0.45));
+      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), inset 0 -2px 6px rgba(15, 23, 42, 0.08);
+    }
+
+    .lang-bar-shell {
+      position: relative;
+      height: 11px;
+      border-radius: 9999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.22);
+    }
+
+    .lang-bar-shell::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.05) 55%, rgba(0, 0, 0, 0.18) 100%);
+      pointer-events: none;
+    }
+
+    .ring-animate {
+      animation: drawRing 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes drawRing {
+      from { stroke-dashoffset: 251.2; }
+      to { stroke-dashoffset: var(--ring-offset, 90.57); }
+    }
+  </style>
+</head>
+<body id="pageBody" class="min-h-screen w-full overflow-x-hidden font-sans antialiased text-white bg-[#07090f] selection:bg-violet-400/30 selection:text-violet-100 transition-colors duration-700 py-6 px-4 sm:px-6 md:px-10 relative">
+
+  <!-- Ambient Drifting Liquid Orbs -->
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div id="orb1" class="absolute -top-28 -left-24 w-80 h-80 sm:w-[32rem] sm:h-[32rem] rounded-full bg-gradient-to-br from-violet-500/45 via-indigo-500/30 to-sky-400/20 blur-[95px] animate-float-slow transition-all duration-700"></div>
+    <div id="orb2" class="absolute -bottom-28 -right-20 w-80 h-80 sm:w-[34rem] sm:h-[34rem] rounded-full bg-gradient-to-tr from-emerald-400/35 via-cyan-500/30 to-blue-500/25 blur-[105px] animate-float-reverse transition-all duration-700"></div>
+    <div id="orb3" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-[28rem] sm:h-[28rem] rounded-full bg-gradient-to-r from-amber-500/25 via-rose-500/20 to-sky-500/25 blur-[100px] animate-float-slow transition-all duration-700"></div>
+  </div>
+
+  <!-- Top Floating Controls -->
+  <header class="w-full max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-3 mb-7 z-20 relative">
+    <a href="https://github.com/smartworldarafath" class="glass-ctrl inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/[0.08] hover:bg-white/[0.15] backdrop-blur-xl border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_8px_24px_rgba(0,0,0,0.25)] transition-all duration-300">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.95)]"></span>
+      <span id="brandLabel" class="text-xs font-semibold tracking-wider uppercase text-white/90">GitHub · smartworldarafath</span>
+    </a>
+
+    <div class="flex flex-wrap items-center gap-2.5">
+      <button type="button" id="motionToggle" aria-pressed="true" class="glass-ctrl inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-semibold bg-white/[0.08] hover:bg-white/[0.15] backdrop-blur-2xl border border-white/20 text-white/90 shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_8px_24px_rgba(0,0,0,0.25)] active:scale-95 transition-all duration-300 cursor-pointer">
+        <span id="motionDot" class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.9)]"></span>
+        <span id="motionLabel">Motion: On</span>
+      </button>
+
+      <nav id="themeNav" aria-label="Glass Theme Selector" class="glass-ctrl inline-flex items-center p-1 rounded-full bg-white/[0.08] backdrop-blur-2xl border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_8px_24px_rgba(0,0,0,0.25)] transition-colors duration-500">
+        <button type="button" data-theme="obsidian" class="theme-btn px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 bg-white/20 text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.5)]">Obsidian</button>
+        <button type="button" data-theme="aurora" class="theme-btn px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-300 text-white/70 hover:text-white">Aurora</button>
+        <button type="button" data-theme="frosted" class="theme-btn px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-300 text-white/70 hover:text-white">Frosted</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="w-full max-w-5xl mx-auto flex flex-col gap-8 z-10 relative">
+
+    <!-- ========================================================= -->
+    <!-- SECTION 1: Hero & Social Liquid Glass Badges              -->
+    <!-- ========================================================= -->
+    <section class="liquid-card tilt-card rounded-[2rem] p-6 sm:p-9 bg-white/[0.07] border border-white/20 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.45),0_30px_80px_rgba(0,0,0,0.5)] overflow-hidden text-center">
+      <div class="glass-glare" aria-hidden="true"></div>
+      <div class="glass-rim" aria-hidden="true"></div>
+
+      <div class="relative z-10 flex flex-col items-center gap-4">
+        <h1 class="main-heading text-3xl sm:text-4xl font-extrabold tracking-tight">Md Arafath Rahman</h1>
+        <p id="typingLine" class="text-sm sm:text-base font-mono font-semibold text-[#70a5fd] min-h-[24px]">Software Engineer | Native Android &amp; Systems</p>
+
+        <!-- 4 Liquid Glass Social & Profile Views Badges -->
+        <div id="socialRow" class="flex flex-wrap items-center justify-center gap-3 pt-1">
+          <a href="https://www.facebook.com/arafath.rahman.57956" target="_blank" rel="noopener noreferrer" data-glow="rgba(24,119,242,0.48)" class="social-pill group relative inline-flex items-center gap-2.5 pl-2 pr-4 py-1.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.16] backdrop-blur-xl border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_8px_20px_rgba(0,0,0,0.28)] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-300 overflow-hidden">
+            <span class="pointer-events-none absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-[160%] skew-x-[-24deg] group-hover:animate-shimmer-sweep"></span>
+            <span class="w-6 h-6 rounded-lg bg-gradient-to-br from-[#42a5f5] to-[#1877F2] flex items-center justify-center shadow-[0_2px_10px_rgba(24,119,242,0.5)]">
+              <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg>
+            </span>
+            <span class="pill-label text-xs sm:text-sm font-semibold">Facebook</span>
+          </a>
+
+          <a href="https://reddit.com/user/anonymousvigilantex" target="_blank" rel="noopener noreferrer" data-glow="rgba(255,69,0,0.45)" class="social-pill group relative inline-flex items-center gap-2.5 pl-2 pr-4 py-1.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.16] backdrop-blur-xl border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_8px_20px_rgba(0,0,0,0.28)] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-300 overflow-hidden">
+            <span class="pointer-events-none absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-[160%] skew-x-[-24deg] group-hover:animate-shimmer-sweep"></span>
+            <span class="w-6 h-6 rounded-lg bg-gradient-to-br from-[#ff7043] to-[#FF4500] flex items-center justify-center shadow-[0_2px_10px_rgba(255,69,0,0.45)]">
+              <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13.5" r="7"/><circle cx="9.2" cy="13" r="1.2" fill="currentColor" stroke="none"/><circle cx="14.8" cy="13" r="1.2" fill="currentColor" stroke="none"/><path d="M9.5 16.5c1.5 1 3.5 1 5 0" stroke-linecap="round"/><path d="M12 6.5l1.7-3 3 .8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="pill-label text-xs sm:text-sm font-semibold">Reddit</span>
+          </a>
+
+          <a href="mailto:arafathrahman711@gmail.com" data-glow="rgba(209,72,54,0.45)" class="social-pill group relative inline-flex items-center gap-2.5 pl-2 pr-4 py-1.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.16] backdrop-blur-xl border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_8px_20px_rgba(0,0,0,0.28)] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-300 overflow-hidden">
+            <span class="pointer-events-none absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-[160%] skew-x-[-24deg] group-hover:animate-shimmer-sweep"></span>
+            <span class="w-6 h-6 rounded-lg bg-gradient-to-br from-[#f87171] to-[#D14836] flex items-center justify-center shadow-[0_2px_10px_rgba(209,72,54,0.45)]">
+              <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="pill-label text-xs sm:text-sm font-semibold">Email</span>
+          </a>
+
+          <a href="https://github.com/smartworldarafath" target="_blank" rel="noopener noreferrer" data-glow="rgba(112,165,253,0.45)" class="group relative inline-flex items-stretch rounded-xl overflow-hidden border border-white/25 shadow-[inset_0_1px_1px_rgba(255,255,255,0.45),0_8px_20px_rgba(112,165,253,0.22)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_12px_28px_rgba(112,165,253,0.4)] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-300">
+            <span class="pointer-events-none absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-[160%] skew-x-[-24deg] group-hover:animate-shimmer-sweep z-20"></span>
+            <span class="flex items-center gap-2 px-3 py-1.5 bg-neutral-900/75 backdrop-blur-xl text-white/95 text-[11px] font-semibold tracking-wider uppercase border-r border-white/20">
+              <svg class="w-3.5 h-3.5 text-[#9cc2ff]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span>Profile Views</span>
+            </span>
+            <span id="profileViewsVal" class="flex items-center px-3 py-1.5 bg-gradient-to-br from-[#8bb8fe] via-[#70a5fd] to-[#3b82f6] text-slate-950 text-xs font-extrabold tabular-nums">985</span>
+          </a>
+        </div>
+
+        <p class="sub-copy text-sm sm:text-[15px] max-w-2xl text-white/80 leading-relaxed pt-1">
+          Android and software developer focused on native performance, Material 3 Expressive UI, and modern web applications. Active open-source contributor across upstream projects.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 2: Tech Stack & Tooling                           -->
+    <!-- ========================================================= -->
+    <section class="liquid-card tilt-card rounded-[2rem] p-6 sm:p-8 md:p-10 bg-white/[0.07] border border-white/20 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.45),0_30px_80px_rgba(0,0,0,0.5)] overflow-hidden">
+      <div class="glass-glare" aria-hidden="true"></div>
+      <div class="glass-rim" aria-hidden="true"></div>
+
+      <div class="relative z-10 flex flex-col gap-7">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <h2 class="main-heading text-2xl sm:text-3xl font-extrabold tracking-tight">Tech Stack &amp; Tooling</h2>
+          <span id="countBadge" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/10 border border-white/20 text-white/85">14 Technologies</span>
+        </div>
+
+        <div class="flex flex-col gap-3.5">
+          <h3 class="section-heading text-base sm:text-lg font-bold tracking-tight text-white/95">Languages &amp; Core Systems</h3>
+          <div id="languagesGrid" class="flex flex-wrap gap-3 sm:gap-3.5"></div>
+        </div>
+
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"></div>
+
+        <div class="flex flex-col gap-3.5">
+          <h3 class="section-heading text-base sm:text-lg font-bold tracking-tight text-white/95">Platforms, Cloud &amp; Infrastructure</h3>
+          <div id="platformsGrid" class="flex flex-wrap gap-3 sm:gap-3.5"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 3: Engineering Metrics & Stats                    -->
+    <!-- ========================================================= -->
+    <section class="flex flex-col gap-5">
+      <div class="flex items-center justify-between px-1">
+        <h2 class="main-heading text-xl sm:text-2xl font-bold tracking-tight">Engineering Metrics &amp; Stats</h2>
+        <span id="statsUpdated" class="sub-copy text-xs text-white/60"></span>
+      </div>
+
+      <div class="flex flex-col items-center gap-5 w-full">
+        <!-- Card 1: GitHub Stats -->
+        <div class="liquid-card tilt-card w-full max-w-[560px] rounded-[22px] p-6 sm:px-8 sm:py-7 bg-white/[0.07] border border-white/20 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.45),0_24px_60px_rgba(0,0,0,0.55)] overflow-hidden">
+          <div class="glass-glare" aria-hidden="true"></div>
+          <div class="glass-rim" aria-hidden="true"></div>
+          <div class="relative z-10">
+            <h3 class="text-lg sm:text-[19px] font-bold tracking-tight text-[#70a5fd] mb-5">Arafath Rahman's GitHub Stats</h3>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+              <ul id="statsList" class="w-full sm:flex-1 space-y-2.5 text-[14px] sm:text-[15px] font-semibold"></ul>
+              <div class="shrink-0 flex items-center justify-center sm:pl-4">
+                <div class="relative w-[108px] h-[108px] rounded-full gauge-glass-well flex items-center justify-center">
+                  <svg class="w-[108px] h-[108px] -rotate-90 drop-shadow-[0_0_12px_rgba(112,165,253,0.45)]" viewBox="0 0 100 100">
+                    <defs>
+                      <linearGradient id="gradeRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#9cc2ff" />
+                        <stop offset="55%" stop-color="#70a5fd" />
+                        <stop offset="100%" stop-color="#5b8def" />
+                      </linearGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(112, 165, 253, 0.18)" stroke-width="6.5" />
+                    <circle id="gradeRingArc" cx="50" cy="50" r="40" fill="none" stroke="url(#gradeRingGrad)" stroke-width="6.5" stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="90.57" class="ring-animate" />
+                  </svg>
+                  <span id="gradeVal" class="absolute text-[#38bdae] text-[28px] font-extrabold tracking-tight select-none">A-</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Streak Stats -->
+        <div class="liquid-card tilt-card w-full max-w-[592px] rounded-[22px] p-6 sm:px-6 sm:py-8 bg-white/[0.07] border border-white/20 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.45),0_24px_60px_rgba(0,0,0,0.55)] overflow-hidden">
+          <div class="glass-glare" aria-hidden="true"></div>
+          <div class="glass-rim" aria-hidden="true"></div>
+          <div class="relative z-10 grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-6 sm:gap-0">
+            <div class="flex flex-col items-center justify-center text-center px-2">
+              <div id="totalContribsVal" class="text-[#70a5fd] text-[32px] font-extrabold tracking-tight leading-none mb-3 tabular-nums">5,077</div>
+              <div class="text-[#70a5fd] text-[15px] font-medium mb-2">Total Contributions</div>
+              <div id="totalContribsRange" class="text-[#38bdae] text-[12.5px] font-medium">Jan 1, 2023 - Present</div>
+            </div>
+            <div class="hidden sm:block w-px h-[146px] bg-gradient-to-b from-transparent via-white/30 to-transparent mx-1"></div>
+            <div class="flex flex-col items-center justify-center text-center px-2">
+              <div class="relative w-[106px] h-[106px] flex items-center justify-center mb-2.5">
+                <div class="absolute inset-[9px] rounded-full gauge-glass-well"></div>
+                <svg class="w-[106px] h-[106px] drop-shadow-[0_0_12px_rgba(112,165,253,0.45)]" viewBox="0 0 110 110">
+                  <defs>
+                    <linearGradient id="streakRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#9cc2ff" />
+                      <stop offset="50%" stop-color="#70a5fd" />
+                      <stop offset="100%" stop-color="#5c8df6" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="55" cy="55" r="43" fill="none" stroke="url(#streakRingGrad)" stroke-width="6" stroke-linecap="round" stroke-dasharray="232 39" transform="rotate(-64 55 55)" />
+                </svg>
+                <div class="absolute -top-[2px] left-1/2 -translate-x-1/2 flex items-center justify-center">
+                  <svg class="w-[24px] h-[24px] text-[#70a5fd] drop-shadow-[0_0_10px_rgba(112,165,253,0.8)]" viewBox="0 0 24 24" fill="currentColor"><path d="M12.9 2.3c.2 2.4-1.3 4.2-2.8 5.6-1.4 1.3-2.6 2.8-2.6 5.1 0 2.7 2.1 5 4.8 5 3.1 0 5.4-2.5 5.4-5.9 0-2.6-1.3-4.9-2.8-6.6-.2 1.2-.8 2.2-1.7 2.8.5-2.1.4-4.2-.3-6zm-.6 13.7c-1.4 0-2.5-1.1-2.5-2.5 0-1.1.6-2 1.6-2.9.8-.7 1.4-1.4 1.7-2.2.8 1.2 1.5 2.5 1.5 4.2 0 1.9-1 3.4-2.3 3.4z"/></svg>
+                </div>
+                <span id="currStreakVal" class="relative z-10 text-[#bf91f3] text-[30px] font-extrabold tracking-tight tabular-nums">12</span>
+              </div>
+              <div class="text-[#bf91f3] text-[15px] font-bold mb-1.5">Current Streak</div>
+              <div id="currStreakRange" class="text-[#38bdae] text-[12.5px] font-medium">Nov 17 - Nov 28</div>
+            </div>
+            <div class="hidden sm:block w-px h-[146px] bg-gradient-to-b from-transparent via-white/30 to-transparent mx-1"></div>
+            <div class="flex flex-col items-center justify-center text-center px-2">
+              <div id="longStreakVal" class="text-[#70a5fd] text-[32px] font-extrabold tracking-tight leading-none mb-3 tabular-nums">60</div>
+              <div class="text-[#70a5fd] text-[15px] font-medium mb-2">Longest Streak</div>
+              <div id="longStreakRange" class="text-[#38bdae] text-[12.5px] font-medium">Sep 17 - Nov 15</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Most Used Languages -->
+        <div class="liquid-card tilt-card w-full max-w-[440px] rounded-[22px] p-6 sm:px-8 sm:py-7 bg-white/[0.07] border border-white/20 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.45),0_24px_60px_rgba(0,0,0,0.55)] overflow-hidden">
+          <div class="glass-glare" aria-hidden="true"></div>
+          <div class="glass-rim" aria-hidden="true"></div>
+          <div class="relative z-10">
+            <h3 class="text-lg sm:text-[19px] font-bold tracking-tight text-[#70a5fd] mb-5">Most Used Languages</h3>
+            <div id="langsBar" class="lang-bar-shell flex w-full mb-6"></div>
+            <div id="langsGrid" class="grid grid-cols-2 gap-x-6 gap-y-3.5 text-[14px] sm:text-[14.5px] font-medium"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 4: Support / Sponsor                              -->
+    <!-- ========================================================= -->
+    <section class="liquid-card tilt-card w-full max-w-2xl mx-auto rounded-[2rem] p-5 sm:p-8 md:p-10 bg-white/[0.07] border border-white/20 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.45),0_30px_80px_rgba(0,0,0,0.5)] overflow-hidden">
+      <div class="glass-glare" aria-hidden="true"></div>
+      <div class="glass-rim" aria-hidden="true"></div>
+
+      <div class="relative z-10 flex flex-col gap-6">
+        <h2 class="main-heading text-xl sm:text-2xl font-bold tracking-tight text-center">Support / Sponsor</h2>
+
+        <div id="tableWrapper" class="w-full rounded-2xl overflow-hidden bg-white/[0.06] backdrop-blur-xl border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_12px_32px_rgba(0,0,0,0.2)]">
+          <div id="tableHeader" class="hidden sm:grid sm:grid-cols-12 border-b border-white/15 bg-white/[0.06]">
+            <div class="col-span-4 px-5 py-3.5 text-sm font-bold tracking-wide border-r border-white/15">Method</div>
+            <div class="col-span-8 px-5 py-3.5 text-sm font-bold tracking-wide">Details / Direct Link</div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-12 items-center">
+            <div class="sm:col-span-4 px-5 py-4 flex items-center gap-3 sm:border-r border-b sm:border-b-0 border-white/15">
+              <div class="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-[#ffe234] via-[#ffd000] to-[#f5a600] shadow-[inset_0_1.5px_1.5px_rgba(255,255,255,0.75),0_4px_14px_rgba(255,210,0,0.4)] shrink-0">
+                <svg class="w-5 h-5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14s1.5 2.5 4 2.5 4-2.5 4-2.5"/><circle cx="9" cy="9.5" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="9.5" r="1" fill="currentColor" stroke="none"/></svg>
+              </div>
+              <span class="text-base font-bold tracking-tight">SupportKori</span>
+            </div>
+            <div class="sm:col-span-8 px-5 py-4 flex flex-wrap items-center justify-between gap-3">
+              <a href="https://www.supportkori.com/arafathrahman" target="_blank" rel="noopener noreferrer" id="directLink" class="text-sm sm:text-[15px] font-medium text-sky-300 hover:text-sky-200 underline underline-offset-4 break-all">https://www.supportkori.com/arafathrahman</a>
+              <button type="button" id="copyLinkBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-white/90 bg-white/10 hover:bg-white/20 active:scale-95 border border-white/20 transition-all duration-200 cursor-pointer">
+                <span id="copyBtnText">Copy</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <a href="https://www.supportkori.com/arafathrahman" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-stretch rounded-2xl overflow-hidden border border-white/30 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.5),0_14px_34px_rgba(255,95,95,0.28)] hover:shadow-[inset_0_1.5px_1.5px_rgba(255,255,255,0.65),0_18px_42px_rgba(255,95,95,0.45)] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300">
+            <span class="pointer-events-none absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-[150%] skew-x-[-22deg] group-hover:animate-shimmer-sweep z-20"></span>
+            <span class="flex items-center gap-2.5 px-4 sm:px-5 py-3 bg-neutral-800/60 backdrop-blur-xl text-white/95 text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase border-r border-white/20">
+              <svg class="w-4 h-4 text-white shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M5 8h12v9a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V8z"/><line x1="6" y1="4" x2="16" y2="4"/></svg>
+              <span>SUPPORT</span>
+            </span>
+            <span class="flex items-center px-5 sm:px-6 py-3 bg-gradient-to-br from-[#ff6b6b]/90 via-[#ff5252]/85 to-[#e63946]/90 text-white text-xs sm:text-sm font-extrabold tracking-[0.16em] uppercase">SUPPORTKORI</span>
+          </a>
+        </div>
+
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"></div>
+
+        <div class="flex justify-center">
+          <a href="https://github.com/smartworldarafath/smartworldarafath/blob/main/SUPPORT.md" target="_blank" rel="noopener noreferrer" class="group relative inline-flex flex-wrap sm:flex-nowrap items-stretch justify-center rounded-2xl overflow-hidden border border-white/30 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.55),0_14px_36px_rgba(255,221,0,0.22)] hover:shadow-[inset_0_1.5px_1.5px_rgba(255,255,255,0.7),0_18px_46px_rgba(255,221,0,0.42)] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 max-w-full">
+            <span class="pointer-events-none absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/45 to-transparent -translate-x-[150%] skew-x-[-22deg] group-hover:animate-shimmer-sweep z-20"></span>
+            <span class="flex items-center justify-center gap-2.5 px-4 sm:px-5 py-3.5 bg-neutral-800/65 backdrop-blur-xl text-white/95 text-xs sm:text-[13px] font-semibold tracking-[0.14em] uppercase border-b sm:border-b-0 sm:border-r border-white/20 w-full sm:w-auto">
+              <svg class="w-4 h-4 text-amber-300 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M5 6h12a1 1 0 0 1 1 1v1h1.5a3.5 3.5 0 0 1 0 7H18v1a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V7a1 1 0 0 1 1-1zm13 4v3h1.5a1.5 1.5 0 0 0 0-3H18zM6 3h10a1 1 0 1 1 0 2H6a1 1 0 1 1 0-2z"/></svg>
+              <span>BUY ME A COFFEE</span>
+            </span>
+            <span class="flex items-center justify-center px-5 sm:px-6 py-3.5 bg-gradient-to-br from-[#ffe838]/95 via-[#ffdd00]/90 to-[#f5c400]/95 text-neutral-950 text-xs sm:text-[13px] font-extrabold tracking-[0.14em] uppercase w-full sm:w-auto text-center">SUPPORT ARAFATH RAHMAN</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Floating Liquid Glass Toast -->
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 left-1/2 -translate-x-1/2 translate-y-10 opacity-0 pointer-events-none z-50 inline-flex items-center gap-2.5 px-5 py-3 rounded-full bg-white/15 backdrop-blur-2xl border border-white/30 text-white text-sm font-medium shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),0_16px_40px_rgba(0,0,0,0.4)] transition-all duration-300">
+    <span id="toastDot" class="w-2.5 h-2.5 rounded-full bg-violet-400 shrink-0"></span>
+    <span id="toastMessage">Selected</span>
+  </div>
+
+  <script src="./stats-data.js"></script>
+  <script>
+    (function () {
+      const SCALLOP_PATH =
+        'M20 1.6 C22.3 1.6 24.1 3.7 26.2 4.4 C28.3 5.1 31 4.4 32.8 6.2 C34.6 8 33.9 10.7 34.6 12.8 ' +
+        'C35.3 14.9 37.4 16.7 37.4 19 C37.4 21.3 35.3 23.1 34.6 25.2 C33.9 27.3 34.6 30 32.8 31.8 ' +
+        'C31 33.6 28.3 32.9 26.2 33.6 C24.1 34.3 22.3 36.4 20 36.4 C17.7 36.4 15.9 34.3 13.8 33.6 ' +
+        'C11.7 32.9 9 33.6 7.2 31.8 C5.4 30 6.1 27.3 5.4 25.2 C4.7 23.1 2.6 21.3 2.6 19 ' +
+        'C2.6 16.7 4.7 14.9 5.4 12.8 C6.1 10.7 5.4 8 7.2 6.2 C9 4.4 11.7 5.1 13.8 4.4 C15.9 3.7 17.7 1.6 20 1.6 Z';
+
+      const LANGUAGES = [
+        { name: 'Kotlin', category: 'Languages & Core Systems', gradFrom: '#9b6bff', gradTo: '#6d28d9', glow: 'rgba(139, 92, 246, 0.48)', icon: `<path d="M13 12.5h13.5l-6.8 6.5 6.8 6.5H13V12.5z" fill="white"/>` },
+        { name: 'Java', category: 'Languages & Core Systems', gradFrom: '#fb923c', gradTo: '#c2410c', glow: 'rgba(249, 115, 22, 0.48)', icon: `<path d="M20.5 11.5c1 2-1.8 3.2-1 5.2.6 1.4 2.4 1.8 2 3.8-.3 1.3-1.4 2.2-2.7 2.4 1.1-.8 1.3-1.8.8-2.6-.7-1.1-2.5-1.4-2.8-3.2-.3-1.9 1.6-3.2 1.2-4.6 1 .5 1.9 1.3 2.5-1z" fill="white"/><path d="M15 24.5c2.2.8 7.8.8 10 0 .5-.2.5.7-.2 1.1-2.6 1.3-7.4 1.3-9.6 0-.7-.4-.7-1.3-.2-1.1z" fill="white"/>` },
+        { name: 'TypeScript', category: 'Languages & Core Systems', gradFrom: '#4b83c3', gradTo: '#244b7a', glow: 'rgba(59, 130, 246, 0.45)', icon: `<path d="M16.5 15l-4 4 4 4M23.5 15l4 4-4 4" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>` },
+        { name: 'JavaScript', category: 'Languages & Core Systems', gradFrom: '#eab308', gradTo: '#a16207', glow: 'rgba(234, 179, 8, 0.45)', icon: `<rect x="13.5" y="13.5" width="13" height="11.5" rx="2" fill="white"/><text x="20" y="21.8" text-anchor="middle" font-size="6.8" font-weight="800" fill="#854d0e" font-family="Inter, sans-serif">JS</text>` },
+        { name: 'Python', category: 'Languages & Core Systems', gradFrom: '#3b82b6', gradTo: '#1e4e79', glow: 'rgba(56, 189, 248, 0.45)', icon: `<path d="M19.8 12.2c-2.6 0-2.5 1.1-2.5 1.1v1.7h2.6v.6h-3.8s-2.1-.2-2.1 2.4c0 2.6 1.8 2.5 1.8 2.5h1.1v-1.3s-.1-1.8 1.8-1.8h2.6s1.5 0 1.5-1.5v-2.2s.3-1.5-3-1.5zm-1.1.9a.55.55 0 1 1 0 1.1.55.55 0 0 1 0-1.1z" fill="white"/><path d="M20.2 25.8c2.6 0 2.5-1.1 2.5-1.1V23h-2.6v-.6h3.8s2.1.2 2.1-2.4c0-2.6-1.8-2.5-1.8-2.5h-1.1v1.3s.1 1.8-1.8 1.8h-2.6s-1.5 0-1.5 1.5v2.2s-.3 1.5 3 1.5zm1.1-.9a.55.55 0 1 1 0-1.1.55.55 0 0 1 0 1.1z" fill="white" opacity="0.9"/>` },
+        { name: 'C / C++', category: 'Languages & Core Systems', gradFrom: '#0ea5e9', gradTo: '#0369a1', glow: 'rgba(14, 165, 233, 0.48)', icon: `<circle cx="20" cy="19" r="6.8" fill="white"/><text x="20" y="21.5" text-anchor="middle" font-size="8.2" font-weight="800" fill="#0369a1" font-family="Inter, sans-serif">C</text>` },
+        { name: '.NET', category: 'Languages & Core Systems', gradFrom: '#818cf8', gradTo: '#4f46e5', glow: 'rgba(99, 102, 241, 0.48)', icon: `<circle cx="20" cy="19" r="6.8" fill="white"/><text x="20" y="21.2" text-anchor="middle" font-size="6.4" font-weight="800" fill="#4338ca" font-family="Inter, sans-serif">.N</text>` },
+      ];
+
+      const PLATFORMS = [
+        { name: 'Android Native', category: 'Platforms, Cloud & Infrastructure', gradFrom: '#34d399', gradTo: '#15803d', glow: 'rgba(34, 197, 94, 0.48)', icon: `<path d="M16.2 15.8l-1.2-2M23.8 15.8l1.2-2" stroke="white" stroke-width="1.3" stroke-linecap="round"/><path d="M15 18.2a5 5 0 0 1 10 0v.5H15v-.5z" fill="white"/><circle cx="18" cy="16.8" r="0.7" fill="#15803d"/><circle cx="22" cy="16.8" r="0.7" fill="#15803d"/><rect x="15" y="19.5" width="10" height="5.2" rx="1.4" fill="white"/><rect x="12.8" y="19.5" width="1.5" height="4" rx="0.75" fill="white"/><rect x="25.7" y="19.5" width="1.5" height="4" rx="0.75" fill="white"/><rect x="17" y="24.5" width="1.7" height="2.3" rx="0.8" fill="white"/><rect x="21.3" y="24.5" width="1.7" height="2.3" rx="0.8" fill="white"/>` },
+        { name: 'Jetpack Compose', category: 'Platforms, Cloud & Infrastructure', gradFrom: '#38bdf8', gradTo: '#1d4ed8', glow: 'rgba(56, 189, 248, 0.48)', icon: `<polygon points="20,12 26,15.5 26,22.5 20,26 14,22.5 14,15.5" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M20 12v7m0 0l6-3.5M20 19l-6-3.5M20 19v7" stroke="white" stroke-width="1.6" stroke-linecap="round"/>` },
+        { name: 'Google Cloud', category: 'Platforms, Cloud & Infrastructure', gradFrom: '#60a5fa', gradTo: '#2563eb', glow: 'rgba(59, 130, 246, 0.5)', icon: `<path d="M15.5 23.2h9.2a3.3 3.3 0 0 0 .5-6.5 4.8 4.8 0 0 0-9.2-1 3.7 3.7 0 0 0-.5 7.5z" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round"/>` },
+        { name: 'Firebase', category: 'Platforms, Cloud & Infrastructure', gradFrom: '#fbbf24', gradTo: '#ea580c', glow: 'rgba(245, 158, 11, 0.5)', icon: `<path d="M15.2 24.2l2.1-11.5c.1-.5.8-.6 1-.1l2 3.8 2.4-2.3c.4-.4 1-.2 1.1.3l1.3 9.8-4.9 2.7-5-2.7z" fill="white"/>` },
+        { name: 'Linux', category: 'Platforms, Cloud & Infrastructure', gradFrom: '#a16207', gradTo: '#713f12', glow: 'rgba(202, 138, 4, 0.48)', icon: `<rect x="13.2" y="14" width="13.6" height="10.2" rx="2" fill="white"/><path d="M16 17.5l2.2 1.8-2.2 1.8M19.8 21.2h3.4" stroke="#713f12" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>` },
+        { name: 'Git', category: 'Platforms, Cloud & Infrastructure', gradFrom: '#f87171', gradTo: '#b91c1c', glow: 'rgba(239, 68, 68, 0.48)', icon: `<circle cx="15.8" cy="19" r="1.9" fill="white"/><circle cx="23.5" cy="15.2" r="1.9" fill="white"/><circle cx="23.5" cy="22.8" r="1.9" fill="white"/><path d="M17.5 18.2l4.3-2.2M17.5 19.8l4.3 2.2" stroke="white" stroke-width="1.8" stroke-linecap="round"/>` },
+        { name: 'Figma', category: 'Platforms, Cloud & Infrastructure', gradFrom: '#ea580c', gradTo: '#9a3412', glow: 'rgba(234, 88, 12, 0.48)', icon: `<rect x="15.5" y="12.5" width="9" height="13" rx="2.5" fill="white"/><circle cx="18.3" cy="15.5" r="1" fill="#9a3412"/><circle cx="21.7" cy="15.5" r="1" fill="#9a3412"/><circle cx="18.3" cy="19" r="1" fill="#9a3412"/><circle cx="21.7" cy="19" r="1" fill="#9a3412"/><circle cx="18.3" cy="22.5" r="1" fill="#9a3412"/>` },
+      ];
+
+      let motionEnabled = true;
+      let gradCounter = 0;
+      let toastTimer = null;
+
+      function showToast(msg, color = '#a78bfa') {
+        clearTimeout(toastTimer);
+        const toast = document.getElementById('toast');
+        document.getElementById('toastMessage').textContent = msg;
+        const dot = document.getElementById('toastDot');
+        dot.style.backgroundColor = color;
+        dot.style.boxShadow = `0 0 10px ${color}`;
+        toast.classList.remove('translate-y-10', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        toastTimer = setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-10', 'opacity-0');
+        }, 2200);
+      }
+
+      function createTechPill(item, idx) {
+        gradCounter += 1;
+        const gid = `sg_${gradCounter}`;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'tech-pill group relative inline-flex items-center gap-3 pl-2 pr-5 py-2 rounded-full bg-white/[0.08] hover:bg-white/[0.15] backdrop-blur-xl border border-white/20 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.4),0_8px_22px_rgba(0,0,0,0.28)] hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-300 overflow-hidden cursor-pointer';
+        btn.innerHTML = `
+          <span class="pointer-events-none absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-[160%] skew-x-[-24deg] group-hover:animate-shimmer-sweep z-20"></span>
+          <span class="relative flex items-center justify-center w-9 h-9 shrink-0 transition-transform duration-300 group-hover:scale-110">
+            <svg class="scallop-rotator absolute inset-0 w-9 h-9 animate-spin-scallop drop-shadow-[0_4px_10px_rgba(0,0,0,0.35)]" style="animation-delay:-${(idx * 0.55).toFixed(2)}s" viewBox="0 0 40 40">
+              <defs><linearGradient id="${gid}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="${item.gradFrom}"/><stop offset="100%" stop-color="${item.gradTo}"/></linearGradient></defs>
+              <g transform="translate(0,1)"><path d="${SCALLOP_PATH}" fill="url(#${gid})" stroke="rgba(255,255,255,0.45)" stroke-width="0.9"/></g>
+            </svg>
+            <svg class="icon-glyph relative z-10 w-9 h-9 animate-icon-float" style="animation-delay:-${(idx * 0.35).toFixed(2)}s" viewBox="0 0 40 40"><g transform="translate(0,1)">${item.icon}</g></svg>
+          </span>
+          <span class="pill-label text-sm sm:text-[15px] font-semibold tracking-tight whitespace-nowrap">${item.name}</span>`;
+        const rot = btn.querySelector('.scallop-rotator');
+        btn.addEventListener('mouseenter', () => {
+          btn.style.boxShadow = `inset 0 1.5px 1.5px rgba(255,255,255,0.6), 0 12px 28px ${item.glow}`;
+          if (motionEnabled && rot) rot.style.animationDuration = '2.2s';
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.boxShadow = '';
+          if (rot) rot.style.animationDuration = '';
+        });
+        btn.addEventListener('click', () => showToast(`${item.name} · ${item.category}`, item.gradFrom));
+        return btn;
+      }
+
+      const langGrid = document.getElementById('languagesGrid');
+      const platGrid = document.getElementById('platformsGrid');
+      LANGUAGES.forEach((item, i) => langGrid.appendChild(createTechPill(item, i)));
+      PLATFORMS.forEach((item, i) => platGrid.appendChild(createTechPill(item, i + LANGUAGES.length)));
+
+      // Hydrate live stats from ./stats-data.js
+      const data = window.PROFILE_STATS || {
+        stats: { stars: '307', commits: '1.9k', prs: '26', issues: '5', contribs: '18', grade: 'A-', ringDashOffset: 90.57 },
+        streak: { totalContributions: '5,077', totalRange: 'Jan 1, 2023 - Present', currentStreak: '12', currentRange: 'Nov 17 - Nov 28', longestStreak: '60', longestRange: 'Sep 17 - Nov 15' },
+        langs: [
+          { name: 'Smali', percent: '90.12%', widthPct: 90.12, color: '#858585' },
+          { name: 'Java', percent: '5.55%', widthPct: 5.55, color: '#b07219' },
+          { name: 'C++', percent: '1.84%', widthPct: 1.84, color: '#f34b7d' },
+          { name: 'Kotlin', percent: '0.98%', widthPct: 0.98, color: '#a97bff' },
+          { name: 'Dart', percent: '0.84%', widthPct: 0.84, color: '#00b4ab' },
+          { name: 'TypeScript', percent: '0.68%', widthPct: 0.68, color: '#3178c6' },
+        ],
+        profileViews: '985',
+      };
+
+      document.getElementById('profileViewsVal').textContent = data.profileViews;
+      if (data.updatedAt) {
+        document.getElementById('statsUpdated').textContent = `Synced ${new Date(data.updatedAt).toLocaleDateString()}`;
+      }
+      document.getElementById('gradeVal').textContent = data.stats.grade;
+      const arc = document.getElementById('gradeRingArc');
+      arc.style.setProperty('--ring-offset', String(data.stats.ringDashOffset));
+      arc.setAttribute('stroke-dashoffset', String(data.stats.ringDashOffset));
+
+      const statRows = [
+        ['Total Stars Earned:', data.stats.stars, '<path d="M8 1.75l1.93 3.91 4.32.63-3.12 3.04.74 4.3L8 11.6l-3.87 2.03.74-4.3-3.12-3.04 4.32-.63L8 1.75z"/>'],
+        ['Total Commits:', data.stats.commits, '<path d="M1.75 8a6.25 6.25 0 1 0 1.4-3.95"/><path d="M1.75 2.5v2.75H4.5"/><path d="M8 4.75V8l2.25 1.5"/>'],
+        ['Total PRs:', data.stats.prs, '<circle cx="4.5" cy="3.5" r="1.75"/><circle cx="4.5" cy="12.5" r="1.75"/><circle cx="11.5" cy="12.5" r="1.75"/><path d="M4.5 5.25v5.5M11.5 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/>'],
+        ['Total Issues:', data.stats.issues, '<circle cx="8" cy="8" r="6.25"/><path d="M8 4.75v3.75"/><circle cx="8" cy="11.25" r="0.5" fill="currentColor"/>'],
+        ['Contributed to (last year):', data.stats.contribs, '<path d="M3.25 2.25h9.5a1 1 0 0 1 1 1v9.5a1 1 0 0 1-1 1h-9.5a1 1 0 0 1-1-1v-9.5a1 1 0 0 1 1-1zM2.25 10.75h11.5M5.5 2.25v8.5"/>'],
+      ];
+      document.getElementById('statsList').innerHTML = statRows
+        .map(([label, val, path]) => `
+          <li class="flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2.5">
+              <svg class="w-[17px] h-[17px] shrink-0 text-[#bf91f3]" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${path}</svg>
+              <span class="text-[#38bdae]">${label}</span>
+            </div>
+            <span class="text-[#38bdae] font-bold tabular-nums min-w-[46px] text-left">${val}</span>
+          </li>`)
+        .join('');
+
+      document.getElementById('totalContribsVal').textContent = data.streak.totalContributions;
+      document.getElementById('totalContribsRange').textContent = data.streak.totalRange;
+      document.getElementById('currStreakVal').textContent = data.streak.currentStreak;
+      document.getElementById('currStreakRange').textContent = data.streak.currentRange;
+      document.getElementById('longStreakVal').textContent = data.streak.longestStreak;
+      document.getElementById('longStreakRange').textContent = data.streak.longestRange;
+
+      document.getElementById('langsBar').innerHTML = data.langs
+        .map((l) => `<div style="width:${l.widthPct}%;background-color:${l.color}" title="${l.name} ${l.percent}"></div>`)
+        .join('');
+      document.getElementById('langsGrid').innerHTML = data.langs
+        .map((l) => `<div class="flex items-center gap-2.5"><span class="w-3 h-3 rounded-full shrink-0" style="background-color:${l.color};box-shadow:0 0 8px ${l.color}"></span><span class="text-[#38bdae] tabular-nums">${l.name} ${l.percent}</span></div>`)
+        .join('');
+
+      // Social pills glow on hover
+      document.querySelectorAll('.social-pill').forEach((p) => {
+        const glow = p.dataset.glow;
+        p.addEventListener('mouseenter', () => { p.style.boxShadow = `inset 0 1.5px 1px rgba(255,255,255,0.6), 0 10px 26px ${glow}`; });
+        p.addEventListener('mouseleave', () => { p.style.boxShadow = ''; });
+      });
+
+      // 3D tilt + cursor specular glare on all liquid-cards
+      document.querySelectorAll('.tilt-card').forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mouse-x', `${x}px`);
+          card.style.setProperty('--mouse-y', `${y}px`);
+          if (!motionEnabled) return;
+          const rx = (((y - rect.height / 2) / (rect.height / 2)) * -3.5).toFixed(2);
+          const ry = (((x - rect.width / 2) / (rect.width / 2)) * 3.5).toFixed(2);
+          card.style.transform = `perspective(1100px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1100px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+        });
+      });
+
+      // Motion toggle
+      document.getElementById('motionToggle').addEventListener('click', () => {
+        motionEnabled = !motionEnabled;
+        document.getElementById('motionLabel').textContent = motionEnabled ? 'Motion: On' : 'Motion: Off';
+        document.getElementById('motionDot').className = motionEnabled ? 'w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.9)]' : 'w-2 h-2 rounded-full bg-neutral-400';
+        document.querySelectorAll('.scallop-rotator, .icon-glyph').forEach((el) => {
+          el.style.animationPlayState = motionEnabled ? 'running' : 'paused';
+        });
+        if (!motionEnabled) {
+          document.querySelectorAll('.tilt-card').forEach((c) => { c.style.transform = ''; });
+        }
+      });
+
+      // Copy SupportKori link
+      document.getElementById('copyLinkBtn').addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText('https://www.supportkori.com/arafathrahman');
+          document.getElementById('copyBtnText').textContent = 'Copied!';
+          showToast('SupportKori link copied!', '#34d399');
+          setTimeout(() => { document.getElementById('copyBtnText').textContent = 'Copy'; }, 2000);
+        } catch {
+          showToast('Link: https://www.supportkori.com/arafathrahman', '#38bdf8');
+        }
+      });
+
+      // Typing cycle
+      const lines = [
+        'Software Engineer | Native Android & Systems',
+        'High-Performance Runtime & Display Pipelines',
+        'Material Design 3 | Fluid Motion Architecture',
+        'Upstream Contributor: VS Code, Qwen, Zen',
+      ];
+      let lineIdx = 0;
+      setInterval(() => {
+        lineIdx = (lineIdx + 1) % lines.length;
+        document.getElementById('typingLine').textContent = lines[lineIdx];
+      }, 3200);
+
+      // Theme switching
+      const body = document.getElementById('pageBody');
+      const themeBtns = document.querySelectorAll('.theme-btn');
+      themeBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const t = btn.dataset.theme;
+          const isFrosted = t === 'frosted';
+          body.classList.remove('theme-obsidian', 'theme-aurora', 'theme-frosted');
+          body.classList.add(`theme-${t}`);
+          const bg = isFrosted ? 'bg-[#edf2fa]' : (t === 'aurora' ? 'bg-[#090418]' : 'bg-[#07090f]');
+          body.className = body.className.replace(/bg-\[#[^\]]+\]/, bg);
+          body.classList.toggle('text-neutral-900', isFrosted);
+          body.classList.toggle('text-white', !isFrosted);
+
+          document.querySelectorAll('.liquid-card').forEach((c) => {
+            c.classList.toggle('bg-white/65', isFrosted);
+            c.classList.toggle('border-white/90', isFrosted);
+            c.classList.toggle('bg-white/[0.07]', !isFrosted);
+            c.classList.toggle('border-white/20', !isFrosted);
+          });
+
+          document.querySelectorAll('.tech-pill, .social-pill, .glass-ctrl').forEach((p) => {
+            p.classList.toggle('bg-white/65', isFrosted);
+            p.classList.toggle('hover:bg-white/90', isFrosted);
+            p.classList.toggle('border-white', isFrosted);
+            p.classList.toggle('text-neutral-900', isFrosted);
+            p.classList.toggle('bg-white/[0.08]', !isFrosted);
+            p.classList.toggle('hover:bg-white/[0.15]', !isFrosted);
+            p.classList.toggle('border-white/20', !isFrosted);
+            p.classList.toggle('text-white', !isFrosted);
+          });
+
+          document.querySelectorAll('.section-heading').forEach((h) => {
+            h.classList.toggle('text-neutral-800', isFrosted);
+            h.classList.toggle('text-white/95', !isFrosted);
+          });
+
+          document.querySelectorAll('.sub-copy').forEach((el) => {
+            el.classList.toggle('text-neutral-700', isFrosted);
+            el.classList.toggle('text-white/80', !isFrosted);
+          });
+
+          document.getElementById('countBadge').className = isFrosted
+            ? 'inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/75 border border-white text-neutral-700'
+            : 'inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/10 border border-white/20 text-white/85';
+          document.getElementById('tableWrapper').className = isFrosted
+            ? 'w-full rounded-2xl overflow-hidden bg-white/55 backdrop-blur-xl border border-white/85 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_8px_24px_rgba(15,23,42,0.06)]'
+            : 'w-full rounded-2xl overflow-hidden bg-white/[0.06] backdrop-blur-xl border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_12px_32px_rgba(0,0,0,0.2)]';
+          document.getElementById('copyLinkBtn').className = isFrosted
+            ? 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-neutral-800 bg-white/70 hover:bg-white/95 active:scale-95 border border-white transition-all duration-200 cursor-pointer'
+            : 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-white/90 bg-white/10 hover:bg-white/20 active:scale-95 border border-white/20 transition-all duration-200 cursor-pointer';
+          document.getElementById('brandLabel').className = isFrosted
+            ? 'text-xs font-semibold tracking-wider uppercase text-neutral-800'
+            : 'text-xs font-semibold tracking-wider uppercase text-white/90';
+          document.getElementById('directLink').className = isFrosted
+            ? 'text-sm sm:text-[15px] font-semibold text-blue-600 hover:text-blue-700 underline underline-offset-4 break-all'
+            : 'text-sm sm:text-[15px] font-medium text-sky-300 hover:text-sky-200 underline underline-offset-4 break-all';
+
+          themeBtns.forEach((b) => {
+            const active = b.dataset.theme === t;
+            b.className = active
+              ? 'theme-btn px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 bg-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.5)]'
+              : 'theme-btn px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-300 opacity-75 hover:opacity-100';
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

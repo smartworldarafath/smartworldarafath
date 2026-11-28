@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="188" height="42" viewBox="0 0 188 42" role="img" aria-label="Profile Views 986">
+  <defs>
+    <clipPath id="pv_clip">
+      <rect x="3" y="3" width="182" height="36" rx="12" ry="12"/>
+    </clipPath>
+
+    <linearGradient id="pv_left" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a2a36" stop-opacity="0.82"/>
+      <stop offset="100%" stop-color="#141824" stop-opacity="0.90"/>
+    </linearGradient>
+
+    <linearGradient id="pv_right" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8bb8fe"/>
+      <stop offset="50%" stop-color="#70a5fd"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+
+    <linearGradient id="pv_bevel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.34"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.14"/>
+    </linearGradient>
+
+    <linearGradient id="pv_shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="pv_glow" x="-15%" y="-25%" width="130%" height="150%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#70a5fd" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect x="3" y="3" width="182" height="36" rx="12" fill="#000000" opacity="0.18" filter="url(#pv_glow)"/>
+
+  <g clip-path="url(#pv_clip)">
+    <rect x="3" y="3" width="128" height="36" fill="url(#pv_left)"/>
+    <rect x="131" y="3" width="54" height="36" fill="url(#pv_right)"/>
+    <rect x="3" y="3" width="182" height="36" fill="url(#pv_bevel)"/>
+    <line x1="131" y1="3" x2="131" y2="39" stroke="#ffffff" stroke-opacity="0.28" stroke-width="1"/>
+    <polygon points="-40,0 8,0 -10,42 -58,42" fill="url(#pv_shimmer)">
+      <animateTransform attributeName="transform" type="translate" values="-40 0; 292 0; 292 0" keyTimes="0; 0.22; 1" dur="7s" begin="1.8s" repeatCount="indefinite"/>
+    </polygon>
+  </g>
+
+  <rect x="3.6" y="3.6" width="180.8" height="34.8" rx="11.4" fill="none" stroke="#ffffff" stroke-opacity="0.38" stroke-width="1.2"/>
+  <path d="M 15 4.3 H 173" stroke="#ffffff" stroke-opacity="0.68" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Eye Icon -->
+  <g transform="translate(15, 14) scale(0.60)" fill="none" stroke="#9cc2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+    <circle cx="12" cy="12" r="3"/>
+  </g>
+  <text x="35" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" letter-spacing="0.6" fill="#f8fafc">PROFILE VIEWS</text>
+  <text x="158" y="25.5" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="800" fill="#071224">986</text>
+</svg>

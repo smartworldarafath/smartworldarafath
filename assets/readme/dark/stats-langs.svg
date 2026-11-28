@@ -56,6 +56,11 @@
     <filter id="lg_glowSoft" x="-30%" y="-30%" width="160%" height="160%">
       <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#70a5fd" flood-opacity="0.45"/>
     </filter>
+    <linearGradient id="lg_shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
   
     <clipPath id="lg_barClip">
       <rect x="28" y="58" width="384" height="11" rx="5.5" ry="5.5"/>
@@ -74,12 +79,24 @@
     <!-- Clipped Liquid Glass Interior -->
     <g clip-path="url(#lg_clip)">
       <rect x="4" y="4" width="432" height="192" rx="22" fill="url(#lg_bg)"/>
-      <!-- Ambient Liquid Refraction Orbs -->
-      <circle cx="70" cy="36" r="123" fill="url(#lg_orbBlue)"/>
-      <circle cx="378" cy="170" r="114" fill="url(#lg_orbPurple)"/>
-      <circle cx="229" cy="110" r="106" fill="url(#lg_orbTeal)"/>
+      <!-- Ambient Liquid Refraction Orbs (continuous gentle drift) -->
+      <circle cx="70" cy="36" r="123" fill="url(#lg_orbBlue)">
+        <animate attributeName="cx" values="70;98;54;70" dur="14s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="36;56;24;36" dur="14s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="378" cy="170" r="114" fill="url(#lg_orbPurple)">
+        <animate attributeName="cx" values="378;352;392;378" dur="16s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="170;152;182;170" dur="16s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="229" cy="110" r="106" fill="url(#lg_orbTeal)">
+        <animate attributeName="cx" values="229;251;207;229" dur="12s" repeatCount="indefinite"/>
+      </circle>
       <!-- Specular Curved Reflection -->
       <rect x="4" y="4" width="432" height="192" rx="22" fill="url(#lg_spec)"/>
+      <!-- Periodic Specular Shimmer Sweep -->
+      <polygon points="-90,0 16,0 -26,200 -132,200" fill="url(#lg_shimmer)">
+        <animateTransform attributeName="transform" type="translate" values="-90 0; 620 0; 620 0" keyTimes="0; 0.22; 1" dur="8s" repeatCount="indefinite"/>
+      </polygon>
     </g>
 
     <!-- Chromatic Rim Border -->

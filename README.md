@@ -8,10 +8,44 @@
 
 <br/>
 
-[![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=flat-square&logo=Facebook&logoColor=white)](https://www.facebook.com/arafath.rahman.57956)
-[![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=flat-square&logo=Reddit&logoColor=white)](https://reddit.com/user/anonymousvigilantex)
-[![Email](https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:arafathrahman711@gmail.com)
-[![Profile Views](https://komarev.com/ghpvc/?username=smartworldarafath&color=70a5fd&style=flat-square&label=Profile+Views)](https://github.com/smartworldarafath)
+<a href="https://www.facebook.com/arafath.rahman.57956" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/badge-facebook.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/badge-facebook.svg">
+    <img src="assets/readme/dark/badge-facebook.svg" alt="Facebook" />
+  </picture>
+</a>
+<a href="https://reddit.com/user/anonymousvigilantex" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/badge-reddit.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/badge-reddit.svg">
+    <img src="assets/readme/dark/badge-reddit.svg" alt="Reddit" />
+  </picture>
+</a>
+<a href="mailto:arafathrahman711@gmail.com">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/badge-email.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/badge-email.svg">
+    <img src="assets/readme/dark/badge-email.svg" alt="Email" />
+  </picture>
+</a>
+<a href="https://github.com/smartworldarafath">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/badge-profile-views.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/badge-profile-views.svg">
+    <img src="assets/readme/dark/badge-profile-views.svg" alt="Profile Views" />
+  </picture>
+</a>
+
+<br/><br/>
+
+<a href="https://smartworldarafath.github.io/smartworldarafath/" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dark/badge-interactive.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/light/badge-interactive.svg">
+    <img src="assets/readme/dark/badge-interactive.svg" alt="Open Interactive Liquid Glass View" />
+  </picture>
+</a>
 
 </div>
 

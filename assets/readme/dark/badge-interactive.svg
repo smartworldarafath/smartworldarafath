@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="270" height="42" viewBox="0 0 270 42" role="img" aria-label="Open Interactive Liquid Glass Profile">
+  <defs>
+    <clipPath id="int_clip"><rect x="3" y="3" width="264" height="36" rx="18" ry="18"/></clipPath>
+    <linearGradient id="int_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#70a5fd" stop-opacity="0.24"/>
+           <stop offset="50%" stop-color="#1e1b4b" stop-opacity="0.72"/>
+           <stop offset="100%" stop-color="#bf91f3" stop-opacity="0.22"/>
+    </linearGradient>
+    <linearGradient id="int_border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="45%" stop-color="#70a5fd" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#bf91f3" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="int_shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#int_clip)">
+    <rect x="3" y="3" width="264" height="36" rx="18" fill="url(#int_bg)"/>
+    <polygon points="-40,0 10,0 -10,42 -60,42" fill="url(#int_shimmer)">
+      <animateTransform attributeName="transform" type="translate" values="-40 0; 384 0; 384 0" keyTimes="0; 0.25; 1" dur="5.5s" repeatCount="indefinite"/>
+    </polygon>
+  </g>
+  <rect x="3.6" y="3.6" width="262.8" height="34.8" rx="17.4" fill="none" stroke="url(#int_border)" stroke-width="1.2"/>
+  <path d="M 21 4.3 H 249" stroke="#ffffff" stroke-opacity="0.62" stroke-width="1" stroke-linecap="round"/>
+  <circle cx="22" cy="21" r="4.5" fill="#38bdae">
+    <animate attributeName="opacity" values="0.65;1;0.65" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <text x="36" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="0.2" fill="#f8fafc">Interactive Liquid Glass View  &#8594;</text>
+</svg>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="42" viewBox="0 0 120 42" role="img" aria-label="Facebook">
+  <defs>
+    <clipPath id="bf_clip">
+      <rect x="3" y="3" width="114" height="36" rx="12" ry="12"/>
+    </clipPath>
+
+    <linearGradient id="bf_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.14"/>
+           <stop offset="48%" stop-color="#141826" stop-opacity="0.68"/>
+           <stop offset="100%" stop-color="#ffffff" stop-opacity="0.06"/>
+    </linearGradient>
+
+    <linearGradient id="bf_chip" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#42a5f5"/>
+      <stop offset="100%" stop-color="#1877F2"/>
+    </linearGradient>
+
+    <linearGradient id="bf_border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.48"/>
+           <stop offset="48%" stop-color="#42a5f5" stop-opacity="0.34"/>
+           <stop offset="100%" stop-color="#ffffff" stop-opacity="0.20"/>
+    </linearGradient>
+
+    <linearGradient id="bf_bevel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.24"/>
+      <stop offset="52%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.16"/>
+    </linearGradient>
+
+    <radialGradient id="bf_orb" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#42a5f5" stop-opacity="0.38"/>
+      <stop offset="100%" stop-color="#1877F2" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="bf_shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="bf_chipGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#42a5f5" flood-opacity="0.50"/>
+    </filter>
+  </defs>
+
+  <g clip-path="url(#bf_clip)">
+    <rect x="3" y="3" width="114" height="36" rx="12" fill="url(#bf_bg)"/>
+    <circle cx="25" cy="21" r="32" fill="url(#bf_orb)"/>
+    <rect x="3" y="3" width="114" height="36" rx="12" fill="url(#bf_bevel)"/>
+    <polygon points="-40,0 8,0 -10,42 -58,42" fill="url(#bf_shimmer)">
+      <animateTransform attributeName="transform" type="translate" values="-40 0; 224 0; 224 0" keyTimes="0; 0.22; 1" dur="7s" begin="0s" repeatCount="indefinite"/>
+    </polygon>
+  </g>
+
+  <!-- Outer Liquid Glass Border & Top Rim -->
+  <rect x="3.6" y="3.6" width="112.8" height="34.8" rx="11.4" fill="none" stroke="url(#bf_border)" stroke-width="1.2"/>
+  <path d="M 15 4.3 H 105" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Left Glowing Glass Brand Chip -->
+  <g transform="translate(9, 9)" filter="url(#bf_chipGlow)">
+    <rect x="0" y="0" width="24" height="24" rx="7" fill="url(#bf_chip)"/>
+    <rect x="0.4" y="0.4" width="23.2" height="23.2" rx="6.6" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="0.8"/>
+    <g transform="translate(4, 4) scale(0.6667)">
+      <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z" fill="#ffffff"/>
+    </g>
+  </g>
+
+  <!-- Label -->
+  <text x="41" y="25.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="-0.1" fill="#f8fafc">Facebook</text>
+</svg>
